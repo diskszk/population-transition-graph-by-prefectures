@@ -1,7 +1,13 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   },
   "extends": [
     "plugin:react-hooks/recommended",
@@ -9,7 +15,11 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
+    "plugin:jest-dom/recommended",
+    // import React from "react; を書かなくてもerrorにならない
+    // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md#when-not-to-use-it
+    "plugin:react/jsx-runtime"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -19,7 +29,21 @@
     "ecmaVersion": "latest",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "jest-dom",
+    "testing-library"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)"
+      ],
+      "extends": ["plugin:testing-library/react"]
+    }
+  ],
   "rules": {
     "semi": "error",
     "no-unused-vars": "off",
@@ -40,5 +64,7 @@
       }
     ],
     "react/prop-types": "off"
-  }
+  },
+  // 下記ファイルにはeslintを適応しない
+  "ignorePatterns": [".eslintrc.*", "setupTests.ts", "jest.setup.ts"]
 }
