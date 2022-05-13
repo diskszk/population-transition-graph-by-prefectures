@@ -12,6 +12,9 @@
       "tsconfig": "tsconfig.json"
     }
   },
+  "moduleNameMapper": {
+    "\\.(css|scss)$": "<rootDir>/node_modules/jest-css-modules"
+  },
   "setupFilesAfterEnv": ["<rootDir>/jest.setup.ts"],
   "testEnvironment": "jest-environment-jsdom"
 }

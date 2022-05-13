@@ -7,7 +7,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint --ext .tsx,.ts src/",
-    "test": "jest"
+    "test": "jest",
+    "clean": "rm -rf dist",
+    "commit:pre": "yarn lint && yarn test && yarn clean && yarn build"
   },
   "dependencies": {
     "react": "^18.0.0",
@@ -36,6 +38,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-testing-library": "^5.5.0",
     "jest": "^28.1.0",
+    "jest-css-modules": "^2.1.0",
     "jest-environment-jsdom": "^28.1.0",
     "prettier": "^2.6.2",
     "ts-jest": "^28.0.2",
