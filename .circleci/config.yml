@@ -13,10 +13,10 @@ jobs:
       - run:
           name: install
           command: yarn install
-      - lint:
+      - run:
           name: lint
-          command: npx eslint --ext .tsx,.ts src/
-      - test:
+          command: yarn lint
+      - run:
           name: test
           command: yarn test
       - run:
