@@ -1,7 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 import App from "./App";
-import "./index.css";
+
+// reset css https://github.com/zacanger/styled-reset
+const GlobalStyle = createGlobalStyle`
+  ${reset};
+`;
 
 const el = document.getElementById("root");
 
@@ -9,6 +15,7 @@ const el = document.getElementById("root");
 if (el) {
   ReactDOM.createRoot(el).render(
     <React.StrictMode>
+      <GlobalStyle />
       <App />
     </React.StrictMode>
   );

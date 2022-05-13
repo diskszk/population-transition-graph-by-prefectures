@@ -1,6 +1,7 @@
 function App() {
   return (
-    <div className="App">
+    <div>
+      aaa
       <p>Hello vite-react</p>
     </div>
   );
