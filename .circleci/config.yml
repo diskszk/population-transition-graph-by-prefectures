@@ -15,10 +15,10 @@ jobs:
           command: yarn install
       - lint:
           name: lint
-          command: eslint --ext .tsx,.ts src/
+          command: yarn lint
       - test:
           name: test
-          command: jest
+          command: yarn test
       - run:
           name: deploy
           command: yarn deploy
