@@ -15,7 +15,7 @@ jobs:
           command: yarn install
       - lint:
           name: lint
-          command: yarn lint
+          command: npx eslint --ext .tsx,.ts src/
       - test:
           name: test
           command: yarn test
