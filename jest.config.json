@@ -9,12 +9,12 @@
   },
   "globals": {
     "ts-jest": {
-      "tsconfig": "tsconfig.json"
+      "tsconfig": "./tsconfig.test.json"
     }
   },
   "moduleNameMapper": {
     "\\.(css|scss)$": "<rootDir>/node_modules/jest-css-modules"
   },
-  "setupFilesAfterEnv": ["<rootDir>/jest.setup.ts"],
+  "setupFilesAfterEnv": ["./jest.setup.ts"],
   "testEnvironment": "jest-environment-jsdom"
 }
