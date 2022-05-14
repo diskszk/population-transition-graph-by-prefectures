@@ -1,9 +1,5 @@
 import axios from "axios";
-
-type Prefecture = {
-  prefCode: number;
-  prefName: string;
-};
+import { Prefecture } from "../../types";
 
 type Response = {
   message: string | null;
