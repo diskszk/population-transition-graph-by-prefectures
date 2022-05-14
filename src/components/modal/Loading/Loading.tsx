@@ -23,7 +23,7 @@ const StyledLoadingAnimation = styled.span`
   border-top: 12px solid #3498db;
   width: 100px;
   height: 100px;
-  animation: spin 2s linear infinite;
+  animation: spin 3s linear infinite;
 
   @keyframes spin {
     0% {
