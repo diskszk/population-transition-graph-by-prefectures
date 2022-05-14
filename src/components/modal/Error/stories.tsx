@@ -1,14 +1,14 @@
 import { ComponentMeta } from "@storybook/react";
 import { Modal } from "../../../partials/Modal/Modal";
-import { Error } from "./Error";
+import { Error as ErrorModal } from "./Error";
 
 export default {
   title: "Components/Modal/Error",
-  component: Error,
-} as ComponentMeta<typeof Error>;
+  component: ErrorModal,
+} as ComponentMeta<typeof ErrorModal>;
 
 export const View = () => (
   <Modal>
-    <Error />
+    <ErrorModal _error={new Error("error")} />
   </Modal>
 );
