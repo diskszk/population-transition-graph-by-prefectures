@@ -1,22 +1,15 @@
 import styled from "styled-components";
+import { StyledContainer } from "../commonStyles";
 
 export const Loading: React.FC = () => {
   return (
     <StyledContainer>
       <StyledLoadingAnimation></StyledLoadingAnimation>
-      <p data-testid="loading-text">Loading...</p>
+      <p>Loading...</p>
     </StyledContainer>
   );
 };
 
-const StyledContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
 const StyledLoadingAnimation = styled.span`
   border: 12px solid #fafafa;
   border-radius: 50%;
