@@ -8,11 +8,11 @@ type Response = {
 };
 
 export async function fetchPrefectures(): Promise<Prefecture[]> {
-  const uri = "https://opendata.resas-portal.go.jp/api/v1/prefectures";
+  const BASE_URL = "https://opendata.resas-portal.go.jp/api/v1/prefectures";
 
-  const res = await axios.get<Response>(uri, {
+  const { data } = await axios.get<Response>(BASE_URL, {
     headers: { "X-API-KEY": API_KEY },
   });
 
-  return res.data.result;
+  return data.result;
 }
