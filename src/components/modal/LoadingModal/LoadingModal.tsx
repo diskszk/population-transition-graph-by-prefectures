@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { StyledContainer } from "../commonStyles";
 
-export const Loading: React.FC = () => {
+export const LoadingModal: React.FC = () => {
   return (
     <StyledContainer>
       <StyledLoadingAnimation></StyledLoadingAnimation>
