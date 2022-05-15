@@ -1,6 +1,6 @@
 import { ComponentMeta } from "@storybook/react";
-import { Modal } from "../../../partials/Modal/Modal";
-import { Error as ErrorModal } from "./Error";
+import { Modal } from "../../../partials/Modal";
+import { ErrorModal } from "./ErrorModal";
 
 export default {
   title: "Components/Modal/Error",
