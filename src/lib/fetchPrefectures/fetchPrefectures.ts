@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_KEY } from "../../constants";
 import { Prefecture } from "../../types";
 
 type Response = {
@@ -8,10 +9,9 @@ type Response = {
 
 export async function fetchPrefectures(): Promise<Prefecture[]> {
   const uri = "https://opendata.resas-portal.go.jp/api/v1/prefectures";
-  const apiKey: string = process.env.VITE_API_KEY || "";
 
   const res = await axios.get<Response>(uri, {
-    headers: { "X-API-KEY": apiKey },
+    headers: { "X-API-KEY": API_KEY },
   });
 
   return res.data.result;
