@@ -4,7 +4,11 @@ import { Checkbox } from "./Checkbox";
 
 describe("Checkbox.tsx", () => {
   beforeEach(() => {
-    const hokkaidou: Prefecture = { prefCode: 1, prefName: "北海道" };
+    const hokkaidou: Prefecture = {
+      prefCode: 1,
+      prefName: "北海道",
+      populations: [],
+    };
 
     render(<Checkbox prefecture={hokkaidou} />);
   });
