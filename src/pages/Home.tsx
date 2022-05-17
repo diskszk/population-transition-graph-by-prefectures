@@ -2,8 +2,10 @@ import { useQuery } from "react-query";
 import styled from "styled-components";
 import { ErrorModal } from "../components/modal/ErrorModal";
 import { LoadingModal } from "../components/modal/LoadingModal";
+import { Title } from "../components/Title";
 import { fetchPrefectures } from "../lib/fetchPrefectures";
 import { Modal } from "../partials/Modal";
+import { PopulationLineGraph } from "../partials/PopulationLineGraph";
 import { PrefectureCheckboxes } from "../partials/PrefectureCheckboxes";
 
 export const Home: React.FC = () => {
@@ -28,9 +30,13 @@ export const Home: React.FC = () => {
   }
 
   return (
-    <StyledWrapper>
-      {data && <PrefectureCheckboxes prefectures={data} />}
-    </StyledWrapper>
+    <>
+      <Title value="都道府県別の総人口推移グラフ" />
+      <StyledWrapper>
+        {data && <PrefectureCheckboxes prefectures={data} />}
+        <PopulationLineGraph prefectures={[]} />
+      </StyledWrapper>
+    </>
   );
 };
 
