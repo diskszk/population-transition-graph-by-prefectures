@@ -14,9 +14,28 @@ export const options = {
   plugins: {
     legend: {
       position: "right" as const,
+      labels: {
+        boxHeight: 1,
+      },
     },
     title: {
       display: false,
+    },
+  },
+  scales: {
+    x: {
+      display: true,
+      title: {
+        display: true,
+        text: "年度",
+      },
+    },
+    y: {
+      display: true,
+      title: {
+        display: true,
+        text: "人口数",
+      },
     },
   },
 };

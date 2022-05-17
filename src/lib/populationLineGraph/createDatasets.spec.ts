@@ -50,7 +50,7 @@ describe("createDatasets", () => {
       label: "北海道",
       data: [100, 200, 300, 400, 500, 600],
       borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
+      backgroundColor: "rgba(255, 99, 132, 0.2)",
     });
   });
 });

@@ -1,5 +1,6 @@
 import { Prefecture, PrefName } from "../../types";
 import { filterPopulationValue } from "./filterPopulationValue";
+import { GRAPH_LINE_COLORS } from "../../constants";
 
 type Dataset = {
   label: PrefName;
@@ -9,14 +10,15 @@ type Dataset = {
 };
 
 export function createDatasets(prefectures: Prefecture[]): Dataset[] {
-  const datasets: Dataset[] = prefectures.map((prefecture) => {
+  const { backgroundColor, borderColor } = GRAPH_LINE_COLORS;
+
+  const datasets: Dataset[] = prefectures.map((prefecture, i) => {
     return {
       label: prefecture.prefName,
       data: filterPopulationValue(prefecture),
 
-      // TODO: ランダムに色を生成する関数を作る
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
+      borderColor: borderColor[i],
+      backgroundColor: backgroundColor[i],
     };
   });
 
