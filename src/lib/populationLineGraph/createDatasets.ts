@@ -1,5 +1,5 @@
 import { Prefecture, PrefName } from "../../types";
-import { filteredPopulationValue } from "./filteredPopulationValue";
+import { filterPopulationValue } from "./filterPopulationValue";
 
 type Dataset = {
   label: PrefName;
@@ -12,7 +12,7 @@ export function createDatasets(prefectures: Prefecture[]): Dataset[] {
   const datasets: Dataset[] = prefectures.map((prefecture) => {
     return {
       label: prefecture.prefName,
-      data: filteredPopulationValue(prefecture),
+      data: filterPopulationValue(prefecture),
 
       // TODO: ランダムに色を生成する関数を作る
       borderColor: "rgb(255, 99, 132)",

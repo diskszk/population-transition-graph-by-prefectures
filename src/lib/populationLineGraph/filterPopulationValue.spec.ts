@@ -1,7 +1,7 @@
 import { Prefecture } from "../../types";
-import { filteredPopulationValue } from "./filteredPopulationValue";
+import { filterPopulationValue } from "./filterPopulationValue";
 
-describe("filteredPopulationValue", () => {
+describe("filterPopulationValue", () => {
   test("人口データの配列を渡すと人口数の配列を返す", () => {
     const data: Prefecture = {
       prefCode: 7,
@@ -14,7 +14,7 @@ describe("filteredPopulationValue", () => {
       ],
     };
 
-    const result = filteredPopulationValue(data);
+    const result = filterPopulationValue(data);
 
     expect(result).toEqual([100]);
   });
@@ -59,7 +59,7 @@ describe("filteredPopulationValue", () => {
       ],
     };
 
-    const result = filteredPopulationValue(data);
+    const result = filterPopulationValue(data);
 
     expect(result).toEqual([100, 200, 300, 400, 500, 600]);
   });
