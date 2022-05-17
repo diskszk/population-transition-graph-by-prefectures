@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { Prefecture } from "../../types";
 
 type Props = {
@@ -10,7 +11,11 @@ export const Checkbox: React.FC<Props> = ({ prefecture }) => {
   return (
     <div>
       <input type={"checkbox"} id={checkboxId} />
-      <label htmlFor={checkboxId}>{prefecture.prefName}</label>
+      <StyledLabel htmlFor={checkboxId}>{prefecture.prefName}</StyledLabel>
     </div>
   );
 };
+
+const StyledLabel = styled.label`
+  margin-left: 2px;
+`;

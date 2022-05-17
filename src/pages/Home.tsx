@@ -1,4 +1,5 @@
 import { useQuery } from "react-query";
+import styled from "styled-components";
 import { ErrorModal } from "../components/modal/ErrorModal";
 import { LoadingModal } from "../components/modal/LoadingModal";
 import { fetchPrefectures } from "../lib/fetchPrefectures";
@@ -7,7 +8,7 @@ import { PrefectureCheckboxes } from "../partials/PrefectureCheckboxes";
 
 export const Home: React.FC = () => {
   const { data, isLoading, error } = useQuery(
-    "getPrefectures",
+    "fetchPrefectures",
     fetchPrefectures
   );
 
@@ -26,5 +27,15 @@ export const Home: React.FC = () => {
     );
   }
 
-  return <div>{data && <PrefectureCheckboxes prefectures={data} />}</div>;
+  return (
+    <StyledWrapper>
+      {data && <PrefectureCheckboxes prefectures={data} />}
+    </StyledWrapper>
+  );
 };
+
+const StyledWrapper = styled.div`
+  @media (min-width: 1020px) {
+    margin: 0 20%;
+  }
+`;
