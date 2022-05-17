@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import styled from "styled-components";
 import { ErrorModal } from "../components/modal/ErrorModal";
 import { LoadingModal } from "../components/modal/LoadingModal";
-import { Title } from "../components/Title";
+import { Header } from "../components/Header";
 import { fetchPrefectures } from "../lib/fetchPrefectures";
 import { Modal } from "../partials/Modal";
 import { PopulationLineGraph } from "../partials/PopulationLineGraph";
@@ -31,7 +31,7 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      <Title value="都道府県別の総人口推移グラフ" />
+      <Header title="都道府県別の総人口推移グラフ" />
       <StyledWrapper>
         {data && <PrefectureCheckboxes prefectures={data} />}
         <PopulationLineGraph prefectures={[]} />
