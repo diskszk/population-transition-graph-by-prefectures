@@ -1,0 +1,20 @@
+{
+  "roots": ["<rootDir>/src"],
+  "testMatch": [
+    "./src/**/?(*.)+(spec|test).+(ts|tsx|js)",
+    "**/?(*.)+(spec|test).+(ts|tsx|js)"
+  ],
+  "transform": {
+    "^.+\\.(ts|tsx)$": "ts-jest"
+  },
+  "globals": {
+    "ts-jest": {
+      "tsconfig": "./tsconfig.test.json"
+    }
+  },
+  "moduleNameMapper": {
+    "\\.(css|scss)$": "<rootDir>/node_modules/jest-css-modules"
+  },
+  "setupFilesAfterEnv": ["./jest.setup.ts"],
+  "testEnvironment": "jest-environment-jsdom"
+}
