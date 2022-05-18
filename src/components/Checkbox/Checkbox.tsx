@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import { useFetchPopulationByPrefectureCode } from "../../hooks";
+import { SetPrefecturesContext } from "../../pages/Home";
 import { Prefecture } from "../../types";
 
 type Props = {
@@ -9,9 +11,10 @@ type Props = {
 export const Checkbox: React.FC<Props> = ({ prefecture }) => {
   const { prefCode, prefName } = prefecture;
   const checkboxId = prefCode.toString();
+  const setPrefectures = useContext(SetPrefecturesContext);
 
   const { mutate, isLoading, isError, error } =
-    useFetchPopulationByPrefectureCode();
+    useFetchPopulationByPrefectureCode(prefecture);
 
   if (isLoading) {
     // 親コンポーネントの<Suspense> に渡りloadingが表示される
@@ -35,7 +38,9 @@ export const Checkbox: React.FC<Props> = ({ prefecture }) => {
           if (checked) {
             mutate(prefCode);
           } else {
-            console.log(checked);
+            setPrefectures((prev) =>
+              prev.filter(({ prefCode }) => prefCode !== prefCode)
+            );
           }
         }}
       />
