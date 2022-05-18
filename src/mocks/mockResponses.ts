@@ -192,6 +192,7 @@ export const mockedPrefecturesResponse = {
   ],
 };
 
+// 北海道の人口
 export const mockedPopulationsResponse = {
   message: null,
   result: {
