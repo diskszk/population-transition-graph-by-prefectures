@@ -13,6 +13,9 @@ export function useFetchPopulationByPrefectureCode() {
         }
         return;
       },
+      onError: () => {
+        return;
+      },
     }
   );
 }

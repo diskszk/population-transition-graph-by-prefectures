@@ -1,33 +1,12 @@
 import { useQuery } from "react-query";
 import styled from "styled-components";
-import { ErrorModal } from "../components/modal/ErrorModal";
-import { LoadingModal } from "../components/modal/LoadingModal";
 import { Header } from "../components/Header";
 import { fetchPrefectures } from "../lib/fetchPrefectures";
-import { Modal } from "../partials/Modal";
 import { PopulationLineGraph } from "../partials/PopulationLineGraph";
 import { PrefectureCheckboxes } from "../partials/PrefectureCheckboxes";
 
 export const Home: React.FC = () => {
-  const { data, isLoading, error } = useQuery(
-    "fetchPrefectures",
-    fetchPrefectures
-  );
-
-  if (isLoading) {
-    return (
-      <Modal>
-        <LoadingModal />
-      </Modal>
-    );
-  }
-  if (error) {
-    return (
-      <Modal>
-        <ErrorModal _error={error} />
-      </Modal>
-    );
-  }
+  const { data } = useQuery("fetchPrefectures", fetchPrefectures);
 
   return (
     <>
