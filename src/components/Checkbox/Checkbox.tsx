@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useFetchPopulationByPrefectureCode } from "../../hooks";
 import { Prefecture } from "../../types";
 
 type Props = {
@@ -6,12 +7,27 @@ type Props = {
 };
 
 export const Checkbox: React.FC<Props> = ({ prefecture }) => {
-  const checkboxId = prefecture.prefCode.toString();
+  const { prefCode, prefName } = prefecture;
+  const checkboxId = prefCode.toString();
+
+  const { mutate } = useFetchPopulationByPrefectureCode();
 
   return (
     <div>
-      <input type={"checkbox"} id={checkboxId} />
-      <StyledLabel htmlFor={checkboxId}>{prefecture.prefName}</StyledLabel>
+      <input
+        type={"checkbox"}
+        id={checkboxId}
+        onChange={(ev) => {
+          const { checked } = ev.target;
+
+          if (checked) {
+            mutate(prefCode);
+          } else {
+            console.log(checked);
+          }
+        }}
+      />
+      <StyledLabel htmlFor={checkboxId}>{prefName}</StyledLabel>
     </div>
   );
 };
