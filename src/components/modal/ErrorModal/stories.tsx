@@ -9,6 +9,6 @@ export default {
 
 export const View = () => (
   <Modal>
-    <ErrorModal _error={new Error("error")} />
+    <ErrorModal error={new Error("error")} onClick={() => null} />
   </Modal>
 );
