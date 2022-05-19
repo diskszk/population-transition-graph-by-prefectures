@@ -2,12 +2,12 @@ import styled from "styled-components";
 import { GRAPH_LINE_COLORS } from "../../constants";
 
 type Props = {
-  value: string;
+  title: string;
 };
-export const Title: React.FC<Props> = ({ value }) => {
+export const Header: React.FC<Props> = ({ title }) => {
   return (
     <StyledHeader>
-      <StyledH1>{value}</StyledH1>
+      <StyledH1>{title}</StyledH1>
     </StyledHeader>
   );
 };
