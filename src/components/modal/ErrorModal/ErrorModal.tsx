@@ -12,7 +12,6 @@ export const ErrorModal: React.FC<Props> = ({ error: _error, onClick }) => {
   return (
     <StyledContainer>
       <p>{customMessage}</p>
-      <p>{_error.message}</p>
       <button onClick={onClick}>閉じる</button>
     </StyledContainer>
   );
