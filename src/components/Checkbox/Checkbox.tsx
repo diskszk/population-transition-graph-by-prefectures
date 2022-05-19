@@ -8,8 +8,7 @@ type Props = {
 };
 
 export const Checkbox: React.FC<Props> = ({ prefecture }) => {
-  const { prefCode, prefName } = prefecture;
-  const checkboxId = prefCode.toString();
+  const checkboxId = prefecture.prefCode.toString();
   const setPrefectures = usePrefecturesSetValue();
 
   const { mutate, isLoading, isError, error } =
@@ -35,15 +34,15 @@ export const Checkbox: React.FC<Props> = ({ prefecture }) => {
           const { checked } = ev.target;
 
           if (checked) {
-            mutate(prefCode);
+            mutate(prefecture.prefCode);
           } else {
             setPrefectures((prev) =>
-              prev.filter(({ prefCode }) => prefCode !== prefCode)
+              prev.filter(({ prefCode }) => prefCode !== prefecture.prefCode)
             );
           }
         }}
       />
-      <StyledLabel htmlFor={checkboxId}>{prefName}</StyledLabel>
+      <StyledLabel htmlFor={checkboxId}>{prefecture.prefName}</StyledLabel>
     </div>
   );
 };
