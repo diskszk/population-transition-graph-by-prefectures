@@ -1,7 +1,6 @@
-import { useContext } from "react";
 import styled from "styled-components";
+import { usePrefecturesSetValue } from "../../contexts/PrefecturesContext";
 import { useFetchPopulationByPrefectureCode } from "../../hooks";
-import { SetPrefecturesContext } from "../../pages/Home";
 import { Prefecture } from "../../types";
 
 type Props = {
@@ -11,7 +10,7 @@ type Props = {
 export const Checkbox: React.FC<Props> = ({ prefecture }) => {
   const { prefCode, prefName } = prefecture;
   const checkboxId = prefCode.toString();
-  const setPrefectures = useContext(SetPrefecturesContext);
+  const setPrefectures = usePrefecturesSetValue();
 
   const { mutate, isLoading, isError, error } =
     useFetchPopulationByPrefectureCode(prefecture);
