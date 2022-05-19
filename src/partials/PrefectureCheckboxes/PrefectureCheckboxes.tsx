@@ -9,7 +9,7 @@ type Props = {
 export const PrefectureCheckboxes: React.FC<Props> = ({ prefectures }) => {
   return (
     <div>
-      <h2>都道府県</h2>
+      <StyledH2>都道府県</StyledH2>
       <StyledUl>
         {prefectures.map((prefecture) => (
           <StyledLi key={prefecture.prefCode}>
@@ -30,4 +30,8 @@ const StyledUl = styled.ul`
 
 const StyledLi = styled.li`
   padding: 4px;
+`;
+
+const StyledH2 = styled.h2`
+  padding: 32px 16px 0 8px;
 `;
