@@ -2,11 +2,10 @@
 // 参考: https://qiita.com/Takepepe/items/41e3e7a2f612d7eb094a
 
 // import層
-import React, { useCallback } from "react";
+import React from "react";
 import styled from "styled-components";
-import { usePrefecturesSetValue } from "../../contexts/PrefecturesContext";
-import { useFetchPopulationByPrefectureCode } from "../../hooks";
 import { Prefecture } from "../../types";
+import { useInputCheck } from "./useInputCheck";
 
 // types層
 type ContainerProps = {
@@ -42,25 +41,7 @@ export const StyledComponent: React.FC<Props> = styled(Component)`
 
 // Container層
 export const Container: React.FC<ContainerProps> = ({ prefecture }) => {
-  const setPrefectures = usePrefecturesSetValue();
-
-  const { mutate, isLoading, isError, error } =
-    useFetchPopulationByPrefectureCode(prefecture);
-
-  const handleChange = useCallback(
-    (ev: React.ChangeEvent<HTMLInputElement>) => {
-      const { checked } = ev.target;
-
-      if (checked) {
-        mutate(prefecture.prefCode);
-      } else {
-        setPrefectures((prev) =>
-          prev.filter(({ prefCode }) => prefCode !== prefecture.prefCode)
-        );
-      }
-    },
-    [mutate, prefecture.prefCode, setPrefectures]
-  );
+  const { handleChange, isLoading, isError, error } = useInputCheck(prefecture);
 
   if (isLoading) {
     // 親コンポーネントの<Suspense> に渡りloadingが表示される
