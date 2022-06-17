@@ -8,6 +8,8 @@
     "preview": "vite preview",
     "lint": "eslint --ext .tsx,.ts src/",
     "test": "jest",
+    "test:o": "jest --onlyChanged",
+    "test:a": "jest --all",
     "clean": "rm -rf dist",
     "commit:pre": "yarn lint && yarn test && yarn clean && yarn build",
     "reinstall": "rm -rf node_modules && yarn",

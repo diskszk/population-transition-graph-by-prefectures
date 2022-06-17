@@ -13,26 +13,25 @@ type ContainerProps = {
   prefecture: Prefecture;
 };
 type Props = {
-  checkboxId: string;
   handleChange: (ev: React.ChangeEvent<HTMLInputElement>) => void;
 } & ContainerProps;
 
 // DOM層: statelessなコンポーネント
-export const Component: React.FC<Props> = ({
-  checkboxId,
-  handleChange,
-  prefecture,
-}) => (
-  <>
-    <input
-      type={"checkbox"}
-      id={checkboxId}
-      name={checkboxId}
-      onChange={handleChange}
-    />
-    <label htmlFor={checkboxId}>{prefecture.prefName}</label>
-  </>
-);
+export const Component: React.FC<Props> = ({ handleChange, prefecture }) => {
+  const checkboxId = prefecture.prefCode.toString();
+
+  return (
+    <>
+      <input
+        type={"checkbox"}
+        id={checkboxId}
+        name={checkboxId}
+        onChange={handleChange}
+      />
+      <label htmlFor={checkboxId}>{prefecture.prefName}</label>
+    </>
+  );
+};
 
 // Style層
 export const StyledComponent: React.FC<Props> = styled(Component)`
@@ -43,7 +42,6 @@ export const StyledComponent: React.FC<Props> = styled(Component)`
 
 // Container層
 export const Container: React.FC<ContainerProps> = ({ prefecture }) => {
-  const checkboxId = prefecture.prefCode.toString();
   const setPrefectures = usePrefecturesSetValue();
 
   const { mutate, isLoading, isError, error } =
@@ -75,10 +73,6 @@ export const Container: React.FC<ContainerProps> = ({ prefecture }) => {
   }
 
   return (
-    <StyledComponent
-      checkboxId={checkboxId}
-      handleChange={handleChange}
-      prefecture={prefecture}
-    />
+    <StyledComponent handleChange={handleChange} prefecture={prefecture} />
   );
 };

@@ -13,7 +13,6 @@ type Props = ComponentProps<typeof Component>;
 
 export const 北海道 = () => {
   const props: Props = {
-    checkboxId: "1",
     handleChange: () => void 0,
     prefecture: mockedHokkaido,
   };
@@ -30,7 +29,6 @@ const okinawa: Prefecture = {
 
 export const 沖縄県: ComponentStoryObj<typeof Component> = {
   args: {
-    checkboxId: "47",
     handleChange: () => void 0,
     prefecture: okinawa,
   } as Props,
