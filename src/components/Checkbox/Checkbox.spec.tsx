@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Prefecture } from "../../types";
-import { Checkbox } from "./Checkbox";
+import { Container } from "./Checkbox";
 
 describe("Checkbox.tsx", () => {
   const client = new QueryClient();
@@ -15,7 +15,7 @@ describe("Checkbox.tsx", () => {
 
     render(
       <QueryClientProvider client={client}>
-        <Checkbox prefecture={hokkaidou} />
+        <Container prefecture={hokkaidou} />
       </QueryClientProvider>
     );
   });
