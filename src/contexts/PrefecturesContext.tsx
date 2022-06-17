@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 import { Prefecture } from "../types";
 
-const prefecturesContext = createContext<Prefecture[]>([]);
+export const prefecturesContext = createContext<Prefecture[]>([]);
 const setPrefecturesContext = createContext<
   React.Dispatch<React.SetStateAction<Prefecture[]>>
 >(() => undefined);

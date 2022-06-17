@@ -1,27 +1,16 @@
-import { render, screen } from "@testing-library/react";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { Prefecture } from "../../types";
-import { Checkbox } from "./Checkbox";
+import { cleanup, render, screen } from "@testing-library/react";
+import { mockedHokkaido } from "../../mocks/mockResponses";
+import { StyledComponent as Component } from "./Checkbox";
 
 describe("Checkbox.tsx", () => {
-  const client = new QueryClient();
-
   beforeEach(() => {
-    const hokkaidou: Prefecture = {
-      prefCode: 1,
-      prefName: "北海道",
-      populations: [],
-    };
-
     render(
-      <QueryClientProvider client={client}>
-        <Checkbox prefecture={hokkaidou} />
-      </QueryClientProvider>
+      <Component handleChange={() => void 0} prefecture={mockedHokkaido} />
     );
   });
 
   afterEach(() => {
-    client.clear();
+    cleanup();
   });
 
   test("チェックボックスと都道府県名を表示する", () => {

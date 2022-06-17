@@ -1,3 +1,5 @@
+import { Prefecture } from "../types";
+
 export const mockedPrefecturesResponse = {
   message: null,
   result: [
@@ -223,4 +225,20 @@ export const mockedPopulationsResponse = {
       },
     ],
   },
+};
+
+export const mockedHokkaido: Prefecture = {
+  prefCode: 1,
+  prefName: "北海道",
+  populations: [
+    { year: 1970, value: 5184287 },
+    { year: 1975, value: 5338206 },
+    { year: 1980, value: 5575989 },
+    { year: 1985, value: 5679439 },
+    { year: 1990, value: 5643647 },
+    { year: 1995, value: 5692321 },
+    { year: 2000, value: 5683062 },
+    { year: 2005, value: 5627737 },
+    { year: 2010, value: 5506419 },
+  ],
 };
