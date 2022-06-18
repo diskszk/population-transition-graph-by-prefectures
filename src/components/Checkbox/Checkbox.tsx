@@ -20,7 +20,7 @@ export const Component: React.FC<Props> = ({ handleChange, prefecture }) => {
   const checkboxId = prefecture.prefCode.toString();
 
   return (
-    <>
+    <div>
       <input
         type={"checkbox"}
         id={checkboxId}
@@ -28,7 +28,7 @@ export const Component: React.FC<Props> = ({ handleChange, prefecture }) => {
         onChange={handleChange}
       />
       <label htmlFor={checkboxId}>{prefecture.prefName}</label>
-    </>
+    </div>
   );
 };
 
