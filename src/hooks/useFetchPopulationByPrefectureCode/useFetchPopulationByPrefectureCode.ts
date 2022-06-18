@@ -1,12 +1,12 @@
 import { useMutation } from "react-query";
-import { usePrefecturesSetValue } from "../../contexts/PrefecturesContext";
 import { combinePrefecture } from "../../lib/combinePrefecture";
 import { fetchPopulationByPrefectureCode } from "../../lib/fetchPopulationByPrefectureCode";
 import { Population, Prefecture } from "../../types";
+import { usePrefectureAddValue } from "../usePrefectureSetValue";
 
 // TODO: この関数でPrefectureをセットするのは良くないので直す => Populationをsetするだけにとどめる
 export function useFetchPopulationByPrefectureCode(prefecture: Prefecture) {
-  const setPrefectures = usePrefecturesSetValue();
+  const { addPrefecture } = usePrefectureAddValue();
 
   return useMutation(
     (prefCode: number) => fetchPopulationByPrefectureCode(prefCode),
@@ -15,7 +15,7 @@ export function useFetchPopulationByPrefectureCode(prefecture: Prefecture) {
         if (data) {
           const combinedPrefecture = combinePrefecture(prefecture, data);
 
-          setPrefectures((prev) => [...prev, { ...combinedPrefecture }]);
+          addPrefecture(combinedPrefecture);
 
           return;
         }
