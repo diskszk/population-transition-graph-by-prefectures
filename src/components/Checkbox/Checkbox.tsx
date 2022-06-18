@@ -26,6 +26,7 @@ export const Component: React.FC<Props> = ({ handleChange, prefecture }) => {
         id={checkboxId}
         name={checkboxId}
         onChange={handleChange}
+        value={prefecture.prefName}
       />
       <label htmlFor={checkboxId}>{prefecture.prefName}</label>
     </div>
