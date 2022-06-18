@@ -15,7 +15,7 @@
     "reinstall": "rm -rf node_modules && yarn",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "cy:open": "cypress open",
+    "cy:open": "cypress open --browser chrome",
     "cy:run": "cypress run"
   },
   "dependencies": {
