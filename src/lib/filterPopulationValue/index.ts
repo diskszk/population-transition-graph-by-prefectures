@@ -1,0 +1,1 @@
+export { filterPopulationValue } from "./filterPopulationValue";

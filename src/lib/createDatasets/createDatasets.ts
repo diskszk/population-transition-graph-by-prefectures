@@ -1,5 +1,5 @@
 import { Prefecture, PrefName } from "../../types";
-import { filterPopulationValue } from "./filterPopulationValue";
+import { filterPopulationValue } from "../filterPopulationValue";
 import { GRAPH_LINE_COLORS } from "../../constants";
 
 type Dataset = {
@@ -15,6 +15,8 @@ export function createDatasets(prefectures: Prefecture[]): Dataset[] {
   const datasets: Dataset[] = prefectures.map((prefecture, i) => {
     return {
       label: prefecture.prefName,
+
+      // TODO: ここではfilterされた状態で出てくる想定
       data: filterPopulationValue(prefecture),
 
       borderColor: borderColor[i],
