@@ -1,7 +1,7 @@
 import { Prefecture, Population } from "../../types";
 import { filterEvery10YearsPopulationWithinRange } from "./filterEvery10YearsPopulationWithinRange";
 
-describe("filterPopulationByRange", () => {
+describe("filterEvery10YearsPopulationWithinRange", () => {
   test("人口数データを渡した時、範囲内の人口数データの配列のみを返す", () => {
     const data: Prefecture = {
       prefCode: 7,
@@ -22,7 +22,7 @@ describe("filterPopulationByRange", () => {
     ]);
   });
 
-  test("人口データの配列を渡すと1970年以降2020年以前の10年ごとの人口数を返す", () => {
+  test("人口データの配列を渡すと1970年以降2020年以前の10年ごとの人口データを返す", () => {
     const data: Population[] = [
       { year: 1960, value: 5039206 },
       { year: 1965, value: 5171800 },

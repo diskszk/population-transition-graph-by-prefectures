@@ -1,6 +1,6 @@
 import { Line } from "react-chartjs-2";
 import { usePrefecturesValue } from "../../contexts/PrefecturesContext";
-import { createDatasets } from "../../lib/populationLineGraph/createDatasets";
+import { createDatasets } from "../../lib/createDatasets";
 import { labels, options } from "./PopulationLineGraphConfig";
 
 export const PopulationLineGraph: React.FC = () => {
