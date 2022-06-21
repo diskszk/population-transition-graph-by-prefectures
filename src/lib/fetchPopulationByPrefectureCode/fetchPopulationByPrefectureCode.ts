@@ -23,5 +23,6 @@ export async function fetchPopulationByPrefectureCode(
     throw new Error(status.toString());
   }
 
-  return data.result.data.map((data) => data.data).flat(1);
+  // label: 総人口だけを取り出す
+  return data.result.data[0].data;
 }
