@@ -1,4 +1,5 @@
-import { ComponentMeta } from "@storybook/react";
+import { ComponentProps } from "react";
+import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { Header } from "./Header";
 
 export default {
@@ -6,6 +7,10 @@ export default {
   component: Header,
 } as ComponentMeta<typeof Header>;
 
-export const View = () => {
-  return <Header title="Title" />;
+type Props = ComponentProps<typeof Header>;
+
+export const Title: ComponentStoryObj<typeof Header> = {
+  args: {
+    title: "Title",
+  } as Props,
 };

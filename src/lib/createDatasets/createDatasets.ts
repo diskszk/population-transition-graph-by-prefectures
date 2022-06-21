@@ -2,7 +2,7 @@ import { Prefecture, PrefName } from "../../types";
 import { filterPopulationValue } from "../filterPopulationValue";
 import { GRAPH_LINE_COLORS } from "../../constants";
 
-type Dataset = {
+export type Dataset = {
   label: PrefName;
   data: number[];
   borderColor: string;

@@ -1,1 +1,1 @@
-export { ErrorModal } from "./ErrorModal";
+export { Container as ErrorModal } from "./ErrorModal";

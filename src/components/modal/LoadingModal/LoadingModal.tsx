@@ -1,14 +1,6 @@
 import styled from "styled-components";
-import { StyledContainer } from "../commonStyles";
-
-export const LoadingModal: React.FC = () => {
-  return (
-    <StyledContainer>
-      <StyledLoadingAnimation></StyledLoadingAnimation>
-      <p>Loading...</p>
-    </StyledContainer>
-  );
-};
+import { StyledContainer } from "../common/commonStyles";
+import { Modal } from "../common/Modal";
 
 const StyledLoadingAnimation = styled.span`
   border: 12px solid #fafafa;
@@ -28,3 +20,12 @@ const StyledLoadingAnimation = styled.span`
     }
   }
 `;
+
+export const Component: React.FC = () => (
+  <Modal>
+    <StyledContainer>
+      <StyledLoadingAnimation></StyledLoadingAnimation>
+      <p>Loading...</p>
+    </StyledContainer>
+  </Modal>
+);

@@ -10,7 +10,6 @@ import reset from "styled-reset";
 import { ErrorModal } from "./components/modal/ErrorModal";
 import { LoadingModal } from "./components/modal/LoadingModal";
 import { Home } from "./pages/Home";
-import { Modal } from "./partials/Modal";
 
 // reset css https://github.com/zacanger/styled-reset
 const GlobalStyle = createGlobalStyle`
@@ -30,24 +29,16 @@ export const App: React.FC = () => {
     <React.StrictMode>
       <GlobalStyle />
       <QueryClientProvider client={queryClient}>
-        <Suspense
-          fallback={
-            <Modal>
-              <LoadingModal />
-            </Modal>
-          }
-        >
+        <Suspense fallback={<LoadingModal />}>
           <QueryErrorResetBoundary>
             {({ reset }) => (
               <ErrorBoundary
                 onReset={reset}
                 fallbackRender={({ resetErrorBoundary, error }) => (
-                  <Modal>
-                    <ErrorModal
-                      error={error}
-                      onClick={() => resetErrorBoundary()}
-                    />
-                  </Modal>
+                  <ErrorModal
+                    error={error}
+                    onClick={() => resetErrorBoundary()}
+                  />
                 )}
               >
                 <Home />

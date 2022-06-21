@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { mockedHokkaido } from "../../mocks/mockResponses";
-import { StyledComponent as Component } from "./Checkbox";
+import { Component } from "./Checkbox";
 
 describe("Checkbox.tsx", () => {
   beforeEach(() => {

@@ -1,1 +1,1 @@
-export { LoadingModal } from "./LoadingModal";
+export { Component as LoadingModal } from "./LoadingModal";
