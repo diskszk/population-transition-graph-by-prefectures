@@ -2,7 +2,7 @@ import { ComponentProps } from "react";
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { mockedHokkaido } from "../../mocks/mockResponses";
 import { Prefecture } from "../../types";
-import { StyledComponent as Component } from "./Checkbox";
+import { Component } from "./Checkbox";
 
 export default {
   title: "Components/Checkbox",
