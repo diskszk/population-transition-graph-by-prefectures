@@ -1,13 +1,6 @@
-import { Prefecture, PrefName } from "../../types";
+import { Dataset, Prefecture } from "../../types";
 import { filterPopulationValue } from "../filterPopulationValue";
 import { GRAPH_LINE_COLORS } from "../../constants";
-
-export type Dataset = {
-  label: PrefName;
-  data: number[];
-  borderColor: string;
-  backgroundColor: string;
-};
 
 export function createDatasets(prefectures: Prefecture[]): Dataset[] {
   const { backgroundColor, borderColor } = GRAPH_LINE_COLORS;

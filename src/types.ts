@@ -1,3 +1,10 @@
+export type Dataset = {
+  label: PrefName;
+  data: number[];
+  borderColor: string;
+  backgroundColor: string;
+};
+
 export type Prefecture = {
   prefCode: number;
   prefName: PrefName;

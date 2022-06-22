@@ -36,6 +36,8 @@ export const options = {
         display: true,
         text: "人口数",
       },
+      suggestedMin: 100000,
+      suggestedMax: 5000000,
     },
   },
 };
