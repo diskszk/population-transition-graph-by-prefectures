@@ -5,16 +5,10 @@ import {
   QueryClientProvider,
   QueryErrorResetBoundary,
 } from "react-query";
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
 import { ErrorModal } from "./components/modal/ErrorModal";
 import { LoadingModal } from "./components/modal/LoadingModal";
 import { Home } from "./pages/Home";
-
-// reset css https://github.com/zacanger/styled-reset
-const GlobalStyle = createGlobalStyle`
-  ${reset};
-`;
+import { GlobalStyle } from "./styles/GlobalStyles";
 
 const queryClient = new QueryClient({
   defaultOptions: {
