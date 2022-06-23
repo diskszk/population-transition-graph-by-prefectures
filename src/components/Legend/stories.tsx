@@ -1,6 +1,5 @@
 import { ComponentStoryObj, Meta } from "@storybook/react";
 import { ComponentProps } from "react";
-import { mockedHokkaido } from "../../mocks/mockResponses";
 import { GlobalStyle } from "../../styles/GlobalStyles";
 import { Component } from "./Legend";
 
@@ -18,17 +17,13 @@ const props: Props = {
       label: "北海道",
       data: [],
       borderColor: "#0f0",
-      prefecture: mockedHokkaido,
+      prefCode: 1,
     },
     {
       label: "青森県",
       data: [],
       borderColor: "#00F",
-      prefecture: {
-        prefCode: 2,
-        prefName: "青森県",
-        populations: [],
-      },
+      prefCode: 2,
     },
   ],
   handleClick: () => void 0,

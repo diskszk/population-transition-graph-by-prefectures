@@ -11,7 +11,7 @@ export function createDatasets(prefectures: Prefecture[]): Dataset[] {
       data: filterPopulationValue(prefecture),
 
       borderColor: GRAPH_LINE_COLORS[i],
-      prefecture: prefecture,
+      prefCode: prefecture.prefCode,
     };
   });
 
