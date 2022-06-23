@@ -1,6 +1,4 @@
 import { Line } from "react-chartjs-2";
-import { usePrefecturesValue } from "../../contexts/PrefecturesContext";
-import { createDatasets } from "../../lib/createDatasets";
 import { Dataset } from "../../types";
 import { options, labels } from "./graphConfig";
 
@@ -11,14 +9,15 @@ type Props = {
   };
 };
 
+type ContainerProps = {
+  datasets: Dataset[];
+};
+
 export const Component: React.FC<Props> = ({ data }) => (
   <Line options={options} data={data} />
 );
 
-export const Container: React.FC = () => {
-  const prefectures = usePrefecturesValue();
-  const datasets = createDatasets(prefectures);
-
+export const Container: React.FC<ContainerProps> = ({ datasets }) => {
   const data = {
     labels,
     datasets,

@@ -1,5 +1,6 @@
 import { ComponentStoryObj, Meta } from "@storybook/react";
 import { ComponentProps } from "react";
+import { mockedHokkaido } from "../../mocks/mockResponses";
 import { GlobalStyle } from "../../styles/GlobalStyles";
 import { Component } from "./Legend";
 
@@ -17,17 +18,20 @@ const props: Props = {
       label: "北海道",
       data: [],
       borderColor: "#0f0",
-      backgroundColor: "",
-      prefCode: 1,
+      prefecture: mockedHokkaido,
     },
     {
       label: "青森県",
       data: [],
       borderColor: "#00F",
-      backgroundColor: "",
-      prefCode: 2,
+      prefecture: {
+        prefCode: 2,
+        prefName: "青森県",
+        populations: [],
+      },
     },
   ],
+  handleClick: () => void 0,
 };
 
 export const LegendItem: ComponentStoryObj<typeof Component> = {

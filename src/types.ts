@@ -2,7 +2,7 @@ export type Dataset = {
   label: PrefName;
   data: number[];
   borderColor: string;
-  backgroundColor: string;
+  prefecture: Prefecture;
 };
 
 export type Prefecture = {

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { GRAPH_LINE_COLORS } from "../../constants";
+import { COLOR_CODE } from "../../constants";
 
 type Props = {
   title: string;
@@ -12,10 +12,8 @@ export const Header: React.FC<Props> = ({ title }) => {
   );
 };
 
-const { backgroundColor } = GRAPH_LINE_COLORS;
-
 const StyledHeader = styled.header`
-  background-color: ${backgroundColor[6]};
+  background-color: ${COLOR_CODE.spaceGray};
   min-height: 64px;
 `;
 const StyledH1 = styled.h1`
