@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { Graph } from "../../components/Graph";
 import { Legend } from "../../components/Legend";
 import { usePrefecturesValue } from "../../contexts/PrefecturesContext";
@@ -8,9 +9,16 @@ export const PopulationLineGraph: React.FC = () => {
   const datasets = createDatasets(prefectures);
 
   return (
-    <div>
+    <StyledDiv>
       <Graph datasets={datasets} />
       <Legend datasets={datasets} />
-    </div>
+    </StyledDiv>
   );
 };
+
+const StyledDiv = styled.div`
+  @media (min-width: 1020px) {
+    display: flex;
+    align-items: center;
+  }
+`;

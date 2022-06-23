@@ -13,6 +13,7 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
+      display: false,
       position: "right" as const,
       labels: {
         boxHeight: 1,

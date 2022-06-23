@@ -11,12 +11,23 @@ type ContainerProps = {
   datasets: Dataset[];
 };
 
+const StyledUl = styled.ul`
+  @media (min-width: 1020px) {
+    min-width: 30%;
+    text-align: center;
+    padding-bottom: 80px;
+    margin-left: 0;
+  }
+
+  margin-left: 32px;
+`;
+
 const StyledLi = styled.li`
   display: flex;
-  height: 20px;
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin-bottom: 8px;
 `;
 const StyledBar = styled.div<{ color: string }>`
   width: 40px;
@@ -25,16 +36,15 @@ const StyledBar = styled.div<{ color: string }>`
   margin-right: 8px;
 `;
 
-// TODO: prefecture | prefcode を持たせる
 export const Component: React.FC<Props> = ({ datasets, handleClick }) => (
-  <ul>
+  <StyledUl>
     {datasets.map((dataset, key) => (
       <StyledLi key={key} onClick={() => handleClick(dataset)}>
         <StyledBar color={dataset.borderColor} />
         <p>{dataset.label}</p>
       </StyledLi>
     ))}
-  </ul>
+  </StyledUl>
 );
 
 export const Container: React.FC<ContainerProps> = (props) => {
