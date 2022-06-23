@@ -1,6 +1,5 @@
 import { ComponentStoryObj, Meta } from "@storybook/react";
 import { ComponentProps } from "react";
-import { mockedHokkaido } from "../../mocks/mockResponses";
 import { GlobalStyle } from "../../styles/GlobalStyles";
 import { Component } from "./Legend";
 
