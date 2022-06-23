@@ -1,3 +1,4 @@
+import { mockedHokkaido } from "../../mocks/mockResponses";
 import { Prefecture } from "../../types";
 import { createDatasets } from "./createDatasets";
 
