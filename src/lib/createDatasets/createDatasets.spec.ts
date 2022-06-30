@@ -35,8 +35,8 @@ describe("createDatasets", () => {
     expect(result[0]).toEqual({
       label: "北海道",
       data: [5184287, 5575989, 5643647, 5683062, 5506419, 5216615],
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.2)",
+      borderColor: "rgba(255, 99, 132, 0.2)",
+      prefCode: 1,
     });
   });
 });
