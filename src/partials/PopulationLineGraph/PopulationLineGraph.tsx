@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { Graph } from "../../components/Graph";
 import { Legend } from "../../components/Legend";
-import { usePrefecturesValue } from "../../contexts/PrefecturesContext";
+import { usePrefectureContext } from "../../hooks/usePrefectureContext";
 import { createDatasets } from "../../lib/createDatasets";
 
 export const PopulationLineGraph: React.FC = () => {
-  const prefectures = usePrefecturesValue();
-  const datasets = createDatasets(prefectures);
+  const { prefecturesValue } = usePrefectureContext();
+  const datasets = createDatasets(prefecturesValue);
 
   return (
     <StyledDiv>

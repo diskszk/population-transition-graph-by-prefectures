@@ -1,6 +1,6 @@
 import { useCallback } from "react";
-import { useFetchPopulationByPrefectureCode } from "../../hooks";
-import { usePrefectureRemoveValue } from "../../hooks/usePrefectureSetValue";
+import { useFetchPopulationByPrefectureCode } from "../../hooks/useFetchPopulationByPrefectureCode";
+import { usePrefectureContext } from "../../hooks/usePrefectureContext";
 import { Prefecture } from "../../types";
 
 export type ReturnType = {
@@ -11,7 +11,7 @@ export type ReturnType = {
 };
 
 export function useInputCheck(prefecture: Prefecture): ReturnType {
-  const { removePrefecture } = usePrefectureRemoveValue();
+  const { removePrefecture } = usePrefectureContext();
 
   const { mutate, isLoading, isError, error } =
     useFetchPopulationByPrefectureCode(prefecture);
