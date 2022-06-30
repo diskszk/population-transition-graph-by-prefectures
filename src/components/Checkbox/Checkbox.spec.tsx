@@ -1,4 +1,5 @@
 import { cleanup, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { mockedHokkaido } from "../../mocks/mockResponses";
 import { Component } from "./Checkbox";
 
@@ -20,5 +21,10 @@ describe("Checkbox.tsx", () => {
 
   test("チェックボックスはデフォルトではチェックが入っていない状態で表示される", () => {
     expect(screen.getByRole("checkbox")).toBeNull;
+  });
+
+  test("チェックボックスをクリックするとチェックボックスにチェックが入る", async () => {
+    await userEvent.click(screen.getByRole("checkbox"));
+    expect(screen.getByRole("checkbox")).toBeChecked();
   });
 });
