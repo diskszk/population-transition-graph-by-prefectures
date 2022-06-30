@@ -1,8 +1,8 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import { ReactNode, createContext, useState } from "react";
 import { Prefecture } from "../types";
 
 export const prefecturesContext = createContext<Prefecture[]>([]);
-const setPrefecturesContext = createContext<
+export const setPrefecturesContext = createContext<
   React.Dispatch<React.SetStateAction<Prefecture[]>>
 >(() => undefined);
 
@@ -21,6 +21,3 @@ export const PrefecturesProvider: React.FC<Props> = ({ children }) => {
     </prefecturesContext.Provider>
   );
 };
-
-export const usePrefecturesValue = () => useContext(prefecturesContext);
-export const usePrefecturesSetValue = () => useContext(setPrefecturesContext);
