@@ -1,16 +1,11 @@
 import { renderHook, RenderHookResult } from "@testing-library/react";
-import { ReactNode } from "react";
 import { act } from "react-dom/test-utils";
-import { PrefecturesProvider } from "../../contexts/PrefecturesContext";
 import { mockedHokkaido } from "../../mocks/mockResponses";
 import { ReturnType, usePrefectureContext } from "./usePrefectureContext";
+import { ContextWrapper as wrapper } from "../../test-utils";
 
 describe("usePrefectureContext", () => {
   let renderHookResult: RenderHookResult<ReturnType, null>;
-
-  const wrapper = (props: { children: ReactNode }) => (
-    <PrefecturesProvider>{props.children}</PrefecturesProvider>
-  );
 
   beforeEach(() => {
     renderHookResult = renderHook(() => usePrefectureContext(), {
