@@ -37,7 +37,7 @@ const StyledBar = styled.div<{ color: string }>`
 `;
 
 export const Component: React.FC<Props> = ({ datasets, handleClick }) => (
-  <StyledUl>
+  <StyledUl data-testid="legend">
     {datasets.map((dataset, key) => (
       <StyledLi key={key} onClick={() => handleClick(dataset)}>
         <StyledBar color={dataset.borderColor} />
