@@ -12,6 +12,7 @@ export function createDatasets(prefectures: Prefecture[]): Dataset[] {
 
       borderColor: GRAPH_LINE_COLORS[i],
       prefCode: prefecture.prefCode,
+      hidden: false,
     };
   });
 

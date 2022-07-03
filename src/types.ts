@@ -3,6 +3,7 @@ export type Dataset = {
   data: number[];
   borderColor: string;
   prefCode: number;
+  hidden: boolean;
 };
 
 export type Prefecture = {

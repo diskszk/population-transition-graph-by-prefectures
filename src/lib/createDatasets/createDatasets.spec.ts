@@ -37,6 +37,7 @@ describe("createDatasets", () => {
       data: [5184287, 5575989, 5643647, 5683062, 5506419, 5216615],
       borderColor: "rgba(255, 99, 132, 0.2)",
       prefCode: 1,
+      hidden: false,
     });
   });
 });

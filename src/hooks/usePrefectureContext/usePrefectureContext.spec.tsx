@@ -1,5 +1,4 @@
-import { renderHook, RenderHookResult } from "@testing-library/react";
-import { act } from "react-dom/test-utils";
+import { act, renderHook, RenderHookResult } from "@testing-library/react";
 import { mockedHokkaido } from "../../mocks/mockResponses";
 import { ReturnType, usePrefectureContext } from "./usePrefectureContext";
 import { ContextWrapper as wrapper } from "../../test-utils";
