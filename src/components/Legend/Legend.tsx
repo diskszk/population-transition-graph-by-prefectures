@@ -1,10 +1,8 @@
-import { useCallback } from "react";
 import styled from "styled-components";
 import { Dataset } from "../../types";
 
 type Props = {
   datasets: Dataset[];
-  handleClick: (dataset: Dataset) => void;
 };
 
 type ContainerProps = {
@@ -36,10 +34,10 @@ const StyledBar = styled.div<{ color: string }>`
   margin-right: 8px;
 `;
 
-export const Component: React.FC<Props> = ({ datasets, handleClick }) => (
+export const Component: React.FC<Props> = ({ datasets }) => (
   <StyledUl data-testid="legend">
     {datasets.map((dataset, key) => (
-      <StyledLi key={key} onClick={() => handleClick(dataset)}>
+      <StyledLi key={key} onClick={() => void 0}>
         <StyledBar color={dataset.borderColor} />
         <p>{dataset.label}</p>
       </StyledLi>
@@ -48,9 +46,5 @@ export const Component: React.FC<Props> = ({ datasets, handleClick }) => (
 );
 
 export const Container: React.FC<ContainerProps> = (props) => {
-  const handleClick = useCallback((dataset: Dataset) => {
-    console.log(dataset, "解除する");
-  }, []);
-
-  return <Component {...props} handleClick={handleClick} />;
+  return <Component {...props} />;
 };

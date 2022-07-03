@@ -2,7 +2,9 @@ import { Dataset, Prefecture } from "../../types";
 import { filterPopulationValue } from "../filterPopulationValue";
 import { GRAPH_LINE_COLORS } from "../../constants";
 
-export function createDatasets(prefectures: Prefecture[]): Dataset[] {
+export function convertToDatasetFromPrefectures(
+  prefectures: Prefecture[]
+): Dataset[] {
   const datasets: Dataset[] = prefectures.map((prefecture, i) => {
     return {
       label: prefecture.prefName,

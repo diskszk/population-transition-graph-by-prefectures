@@ -28,7 +28,6 @@ const props: Props = {
       hidden: false,
     },
   ],
-  handleClick: () => void 0,
 };
 
 export const LegendItem: ComponentStoryObj<typeof Component> = {

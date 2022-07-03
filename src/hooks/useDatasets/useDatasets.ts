@@ -1,38 +1,51 @@
-import { Reducer, useReducer } from "react";
-import { createDatasets } from "../../lib/createDatasets";
-import { Dataset, Prefecture } from "../../types";
+import { Dispatch, Reducer, useReducer } from "react";
+import { Dataset } from "../../types";
 
 export type ReturnType = {
   datasets: Dataset[];
-  toggleHidden: (code: number) => void;
+  dispatch: Dispatch<Action>;
 };
 
-type Action = {
-  type: "TOGGLE_HIDDEN";
+// add/removeに分ける必要あり？
+export const UPDATE_DATASET = "UPDATE_DATASET" as const;
+export const TOGGLE_HIDDEN = "TOGGLE_HIDDEN" as const;
+
+type UpdateDatasetAction = {
+  type: typeof UPDATE_DATASET;
+  payload: Dataset[];
+};
+type ToggleHiddenAction = {
+  type: typeof TOGGLE_HIDDEN;
   payload: number;
 };
 
+type Action = UpdateDatasetAction | ToggleHiddenAction;
+
 const reducer: Reducer<Dataset[], Action> = (state, action): Dataset[] => {
   switch (action.type) {
-    case "TOGGLE_HIDDEN": {
+    case UPDATE_DATASET: {
+      return [...action.payload];
+    }
+
+    case TOGGLE_HIDDEN: {
       return state.map((item) =>
         item.prefCode === action.payload
           ? { ...item, hidden: !item.hidden }
           : item
       );
     }
+
     default: {
       return state;
     }
   }
 };
 
-export function useDatasets(prefectures: Prefecture[]): ReturnType {
-  const [state, dispatch] = useReducer(reducer, createDatasets(prefectures));
+export function useDatasets(): ReturnType {
+  const [state, dispatch] = useReducer(reducer, []);
 
   return {
     datasets: state,
-    toggleHidden: (code: number) =>
-      dispatch({ type: "TOGGLE_HIDDEN", payload: code }),
+    dispatch,
   };
 }

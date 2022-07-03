@@ -1,7 +1,7 @@
 import { Prefecture } from "../../types";
-import { createDatasets } from "./createDatasets";
+import { convertToDatasetFromPrefectures } from "./convertToDatasetFromPrefectures";
 
-describe("createDatasets", () => {
+describe("convertToDatasetFromPopulations", () => {
   test("渡された都道府県データ、人口データからグラフ描画用のデータを生成する", () => {
     const data: Prefecture[] = [
       {
@@ -30,7 +30,7 @@ describe("createDatasets", () => {
       },
     ];
 
-    const result = createDatasets(data);
+    const result = convertToDatasetFromPrefectures(data);
 
     expect(result[0]).toEqual({
       label: "北海道",
