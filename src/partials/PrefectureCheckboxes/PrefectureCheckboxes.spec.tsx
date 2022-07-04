@@ -1,33 +1,19 @@
 import { render, screen } from "@testing-library/react";
 import { PrefectureCheckboxes } from "./PrefectureCheckboxes";
-import { Prefecture } from "../../types";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 describe("PrefectureCheckboxes", () => {
   const client = new QueryClient();
 
-  test("各都道府県名とチェックボックスを表示する", () => {
-    const prefectures: Prefecture[] = [
-      {
-        prefCode: 1,
-        prefName: "北海道",
-        populations: [],
-      },
-      {
-        prefCode: 2,
-        prefName: "青森県",
-        populations: [],
-      },
-    ];
-
+  test("各都道府県名とチェックボックスを表示する", async () => {
     render(
       <QueryClientProvider client={client}>
-        <PrefectureCheckboxes prefectures={prefectures} />
+        <PrefectureCheckboxes />
       </QueryClientProvider>
     );
-    expect(screen.getByText("北海道"));
-    expect(screen.getByText("青森県"));
-    expect(screen.getAllByRole("checkbox"));
+    expect(await screen.findByText("北海道"));
+    expect(await screen.findAllByRole("checkbox"));
+    expect(await screen.findAllByRole("checkbox")).toHaveLength(47);
     client.clear();
   });
 });
