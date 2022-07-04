@@ -18,15 +18,16 @@ const props: Props = {
       data: [],
       borderColor: "#0f0",
       prefCode: 1,
+      hidden: false,
     },
     {
       label: "青森県",
       data: [],
       borderColor: "#00F",
       prefCode: 2,
+      hidden: false,
     },
   ],
-  handleClick: () => void 0,
 };
 
 export const LegendItem: ComponentStoryObj<typeof Component> = {

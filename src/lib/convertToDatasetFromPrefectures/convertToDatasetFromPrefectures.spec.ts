@@ -1,7 +1,7 @@
 import { Prefecture } from "../../types";
-import { createDatasets } from "./createDatasets";
+import { convertToDatasetFromPrefectures } from "./convertToDatasetFromPrefectures";
 
-describe("createDatasets", () => {
+describe("convertToDatasetFromPopulations", () => {
   test("渡された都道府県データ、人口データからグラフ描画用のデータを生成する", () => {
     const data: Prefecture[] = [
       {
@@ -30,13 +30,14 @@ describe("createDatasets", () => {
       },
     ];
 
-    const result = createDatasets(data);
+    const result = convertToDatasetFromPrefectures(data);
 
     expect(result[0]).toEqual({
       label: "北海道",
       data: [5184287, 5575989, 5643647, 5683062, 5506419, 5216615],
       borderColor: "rgba(255, 99, 132, 0.2)",
       prefCode: 1,
+      hidden: false,
     });
   });
 });
