@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { COLOR_CODE } from "../../constants";
 import { Dataset } from "../../types";
 
 type Props = {
@@ -30,7 +31,7 @@ const StyledLi = styled.li`
 const StyledBar = styled.div<{ color?: string }>`
   width: 40px;
   height: 4px;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.color || COLOR_CODE.spaceGray};
   margin-right: 8px;
 `;
 

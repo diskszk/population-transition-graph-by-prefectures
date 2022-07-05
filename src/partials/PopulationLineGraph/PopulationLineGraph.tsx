@@ -1,10 +1,19 @@
+import { useMemo } from "react";
 import styled from "styled-components";
 import { Graph } from "../../components/Graph";
 import { Legend } from "../../components/Legend";
+import { GRAPH_LINE_COLORS } from "../../constants";
 import { useDatasets } from "../../hooks/useDatasets";
 
 export const PopulationLineGraph: React.FC = () => {
-  const { datasets } = useDatasets();
+  const { state } = useDatasets();
+  const datasets = useMemo(
+    () =>
+      state.map((data, i) => {
+        return { ...data, borderColor: GRAPH_LINE_COLORS[i] };
+      }),
+    [state]
+  );
 
   return (
     <StyledDiv>

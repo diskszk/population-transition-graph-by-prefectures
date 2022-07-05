@@ -11,7 +11,7 @@ import {
 import { Dataset } from "../../types";
 
 export type ReturnType = {
-  datasets: Dataset[];
+  state: Dataset[];
   addDataset: (dataset: Dataset) => void;
   removeDataset: (prefCode: number) => void;
   toggleHidden: (prefCode: number) => void;
@@ -22,7 +22,7 @@ export function useDatasets(): ReturnType {
   const dispatch = useContext(DatasetsSetContext);
 
   return {
-    datasets: state,
+    state,
     addDataset: (dataset: Dataset): void =>
       dispatch({ type: ADD_DATASET, payload: dataset }),
     removeDataset: (prefCode: number): void =>

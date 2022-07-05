@@ -30,7 +30,7 @@ describe("useDatasets", () => {
   test("初期値は空の配列である", () => {
     const { result } = renderHookResult;
 
-    expect(result.current.datasets).toEqual([]);
+    expect(result.current.state).toEqual([]);
   });
 
   test("addDataset: 北海道のデータを配列に追加したあと、北海道のデータを参照できる", () => {
@@ -40,8 +40,8 @@ describe("useDatasets", () => {
       result.current.addDataset(dummyData1);
     });
 
-    expect(result.current.datasets).toHaveLength(1);
-    expect(result.current.datasets[0].label).toBe("北海道");
+    expect(result.current.state).toHaveLength(1);
+    expect(result.current.state[0].label).toBe("北海道");
   });
 
   test("removeDataset: 北海道のデータを配列から削除すると、北海道のデータを参照できない", () => {
@@ -52,14 +52,14 @@ describe("useDatasets", () => {
       result.current.addDataset(dummyData2);
     });
 
-    expect(result.current.datasets).toHaveLength(2);
+    expect(result.current.state).toHaveLength(2);
 
     act(() => {
       result.current.removeDataset(1);
     });
 
-    expect(result.current.datasets).toHaveLength(1);
-    expect(result.current.datasets).not.toEqual(
+    expect(result.current.state).toHaveLength(1);
+    expect(result.current.state).not.toEqual(
       expect.arrayContaining([dummyData1])
     );
   });
@@ -70,18 +70,18 @@ describe("useDatasets", () => {
     act(() => {
       result.current.addDataset(dummyData1);
     });
-    expect(result.current.datasets[0].hidden).toBe(false);
+    expect(result.current.state[0].hidden).toBe(false);
 
     // false -> true
     act(() => {
       result.current.toggleHidden(1);
     });
-    expect(result.current.datasets[0].hidden).toBe(true);
+    expect(result.current.state[0].hidden).toBe(true);
 
     // true -> false
     act(() => {
       result.current.toggleHidden(1);
     });
-    expect(result.current.datasets[0].hidden).toBe(false);
+    expect(result.current.state[0].hidden).toBe(false);
   });
 });
