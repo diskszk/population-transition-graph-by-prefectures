@@ -11,8 +11,6 @@ export type ReturnType = {
 };
 
 export function useInputCheck(prefecture: Prefecture): ReturnType {
-  const { removePrefecture } = usePrefectureContext();
-
   const { mutate, isLoading, isError, error } =
     useFetchPopulationByPrefectureCode(prefecture);
 
@@ -24,10 +22,11 @@ export function useInputCheck(prefecture: Prefecture): ReturnType {
         if (checked) {
           mutate(prefecture.prefCode);
         } else {
-          removePrefecture(prefecture);
+          // removePrefecture(prefecture);
+          console.log("remove");
         }
       },
-      [mutate, prefecture, removePrefecture]
+      [mutate, prefecture]
     ),
     isLoading,
     isError,

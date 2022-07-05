@@ -6,7 +6,11 @@ import { Component } from "./Checkbox";
 describe("Checkbox.tsx", () => {
   beforeEach(() => {
     render(
-      <Component handleChange={() => void 0} prefecture={mockedHokkaido} />
+      <Component
+        prefecture={mockedHokkaido}
+        checkedOn={() => void 0}
+        checkedOff={() => void 0}
+      />
     );
   });
 

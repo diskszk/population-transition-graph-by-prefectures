@@ -5,14 +5,15 @@
 import React from "react";
 import styled from "styled-components";
 import { Prefecture } from "../../types";
-import { useInputCheck } from "./useInputCheck";
+import { useHandleCheck } from "./useHandleCheck";
 
 // types層
 type ContainerProps = {
   prefecture: Prefecture;
 };
 type Props = {
-  handleChange: (ev: React.ChangeEvent<HTMLInputElement>) => void;
+  checkedOn: (prefecture: Prefecture) => void;
+  checkedOff: (prefCode: number) => void;
 } & ContainerProps;
 
 const StyledLabel = styled.label`
@@ -20,36 +21,44 @@ const StyledLabel = styled.label`
 `;
 
 // DOM層: statelessなコンポーネント
-export const Component: React.FC<Props> = ({ handleChange, prefecture }) => {
-  const checkboxId = prefecture.prefCode.toString();
+export const Component: React.FC<Props> = ({
+  prefecture,
+  checkedOn,
+  checkedOff,
+}) => (
+  <div>
+    <input
+      type={"checkbox"}
+      id={`${prefecture.prefCode}`}
+      name={`${prefecture.prefCode}`}
+      onChange={(ev) => {
+        if (ev.target.checked) {
+          checkedOn(prefecture);
 
-  return (
-    <div>
-      <input
-        type={"checkbox"}
-        id={checkboxId}
-        name={checkboxId}
-        onChange={handleChange}
-        value={prefecture.prefName}
-      />
-      <StyledLabel htmlFor={checkboxId}>{prefecture.prefName}</StyledLabel>
-    </div>
-  );
-};
+          return;
+        } else {
+          checkedOff(prefecture.prefCode);
+
+          return;
+        }
+      }}
+      value={prefecture.prefName}
+    />
+    <StyledLabel htmlFor={`${prefecture.prefCode}`}>
+      {prefecture.prefName}
+    </StyledLabel>
+  </div>
+);
 
 // Container層
 export const Container: React.FC<ContainerProps> = ({ prefecture }) => {
-  const { handleChange, isLoading, isError, error } = useInputCheck(prefecture);
+  const { checkedOn, checkedOff } = useHandleCheck();
 
-  if (isLoading) {
-    // 親コンポーネントの<Suspense> に渡りloadingが表示される
-    // TODO: なんで動いているのかわからないので理解したい
-    throw new Promise(() => null);
-  }
-
-  if (isError) {
-    throw new Error(String(error));
-  }
-
-  return <Component handleChange={handleChange} prefecture={prefecture} />;
+  return (
+    <Component
+      prefecture={prefecture}
+      checkedOn={checkedOn}
+      checkedOff={checkedOff}
+    />
+  );
 };
