@@ -1,35 +1,30 @@
 import { act, renderHook, RenderHookResult } from "@testing-library/react";
-import { GRAPH_LINE_COLORS } from "../../constants";
+import { DatasetContextWrapper as wrapper } from "../../test-utils";
 import { Dataset } from "../../types";
-import {
-  ReturnType,
-  TOGGLE_HIDDEN,
-  UPDATE_DATASET,
-  useDatasets,
-} from "./useDatasets";
+import { ReturnType, useDatasets } from "./useDatasets";
+
+const dummyData1: Dataset = {
+  label: "北海道",
+  data: [],
+  borderColor: "#00f",
+  prefCode: 1,
+  hidden: false,
+};
+const dummyData2: Dataset = {
+  label: "青森県",
+  data: [],
+  borderColor: "#0f0",
+  prefCode: 2,
+  hidden: false,
+};
 
 describe("useDatasets", () => {
   let renderHookResult: RenderHookResult<ReturnType, null>;
 
-  const dummyData: Dataset[] = [
-    {
-      label: "北海道",
-      data: [],
-      borderColor: GRAPH_LINE_COLORS[0],
-      prefCode: 1,
-      hidden: false,
-    },
-    {
-      label: "青森県",
-      data: [],
-      borderColor: GRAPH_LINE_COLORS[1],
-      prefCode: 2,
-      hidden: false,
-    },
-  ];
-
   beforeEach(() => {
-    renderHookResult = renderHook(() => useDatasets());
+    renderHookResult = renderHook(() => useDatasets(), {
+      wrapper,
+    });
   });
 
   test("初期値は空の配列である", () => {
@@ -38,38 +33,55 @@ describe("useDatasets", () => {
     expect(result.current.datasets).toEqual([]);
   });
 
-  test("UPDATE_DATASET: dataを登録する", () => {
+  test("addDataset: 北海道のデータを配列に追加したあと、北海道のデータを参照できる", () => {
     const { result } = renderHookResult;
 
     act(() => {
-      result.current.dispatch({
-        type: UPDATE_DATASET,
-        payload: dummyData,
-      });
+      result.current.addDataset(dummyData1);
     });
 
-    expect(result.current.datasets).toEqual(dummyData);
+    expect(result.current.datasets).toHaveLength(1);
+    expect(result.current.datasets[0].label).toBe("北海道");
   });
 
-  test("TOGGLE_HIDDEN: hidden要素が切り替わる", () => {
+  test("removeDataset: 北海道のデータを配列から削除すると、北海道のデータを参照できない", () => {
     const { result } = renderHookResult;
 
-    // dummyデータを登録する
     act(() => {
-      result.current.dispatch({
-        type: UPDATE_DATASET,
-        payload: dummyData,
-      });
-    });
-
-    act(() => {
-      result.current.dispatch({
-        type: TOGGLE_HIDDEN,
-        payload: 1,
-      });
+      result.current.addDataset(dummyData1);
+      result.current.addDataset(dummyData2);
     });
 
     expect(result.current.datasets).toHaveLength(2);
+
+    act(() => {
+      result.current.removeDataset(1);
+    });
+
+    expect(result.current.datasets).toHaveLength(1);
+    expect(result.current.datasets).not.toEqual(
+      expect.arrayContaining([dummyData1])
+    );
+  });
+
+  test("toggleHidden: 選択されたデータのhidden要素が反転する", () => {
+    const { result } = renderHookResult;
+
+    act(() => {
+      result.current.addDataset(dummyData1);
+    });
+    expect(result.current.datasets[0].hidden).toBe(false);
+
+    // false -> true
+    act(() => {
+      result.current.toggleHidden(1);
+    });
     expect(result.current.datasets[0].hidden).toBe(true);
+
+    // true -> false
+    act(() => {
+      result.current.toggleHidden(1);
+    });
+    expect(result.current.datasets[0].hidden).toBe(false);
   });
 });

@@ -1,51 +1,33 @@
-import { Dispatch, Reducer, useReducer } from "react";
+import { useContext } from "react";
+import {
+  DatasetsSetContext,
+  DatasetsValueContext,
+} from "../../contexts/DatasetsProvider";
+import {
+  ADD_DATASET,
+  REMOVE_DATASET,
+  TOGGLE_HIDDEN,
+} from "../../reducers/datasetsReducer";
 import { Dataset } from "../../types";
 
 export type ReturnType = {
   datasets: Dataset[];
-  dispatch: Dispatch<Action>;
-};
-
-// add/removeに分ける必要あり？
-export const UPDATE_DATASET = "UPDATE_DATASET" as const;
-export const TOGGLE_HIDDEN = "TOGGLE_HIDDEN" as const;
-
-type UpdateDatasetAction = {
-  type: typeof UPDATE_DATASET;
-  payload: Dataset[];
-};
-type ToggleHiddenAction = {
-  type: typeof TOGGLE_HIDDEN;
-  payload: number;
-};
-
-type Action = UpdateDatasetAction | ToggleHiddenAction;
-
-const reducer: Reducer<Dataset[], Action> = (state, action): Dataset[] => {
-  switch (action.type) {
-    case UPDATE_DATASET: {
-      return [...action.payload];
-    }
-
-    case TOGGLE_HIDDEN: {
-      return state.map((item) =>
-        item.prefCode === action.payload
-          ? { ...item, hidden: !item.hidden }
-          : item
-      );
-    }
-
-    default: {
-      return state;
-    }
-  }
+  addDataset: (dataset: Dataset) => void;
+  removeDataset: (prefCode: number) => void;
+  toggleHidden: (prefCode: number) => void;
 };
 
 export function useDatasets(): ReturnType {
-  const [state, dispatch] = useReducer(reducer, []);
+  const state = useContext(DatasetsValueContext);
+  const dispatch = useContext(DatasetsSetContext);
 
   return {
     datasets: state,
-    dispatch,
+    addDataset: (dataset: Dataset): void =>
+      dispatch({ type: ADD_DATASET, payload: dataset }),
+    removeDataset: (prefCode: number): void =>
+      dispatch({ type: REMOVE_DATASET, payload: prefCode }),
+    toggleHidden: (prefCode: number): void =>
+      dispatch({ type: TOGGLE_HIDDEN, payload: prefCode }),
   };
 }
