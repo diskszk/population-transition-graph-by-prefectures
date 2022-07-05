@@ -13,7 +13,7 @@ export type ReturnType = {
 export function useHandleCheck(): ReturnType {
   const { removeDataset, addDataset } = useDatasets();
 
-  const { mutate, isLoading } = useMutation(
+  const { mutate, isLoading, isError } = useMutation(
     (prefecture: Prefecture) =>
       fetchPopulationByPrefectureCode(prefecture.prefCode),
     {
@@ -27,6 +27,9 @@ export function useHandleCheck(): ReturnType {
 
   if (isLoading) {
     throw new Promise(() => void 0);
+  }
+  if (isError) {
+    throw new Error();
   }
 
   const checkedOn = useCallback(
