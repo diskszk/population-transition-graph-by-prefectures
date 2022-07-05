@@ -1,1 +1,0 @@
-export { combinePrefecture } from "./combinePrefecture";
