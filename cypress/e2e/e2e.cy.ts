@@ -35,7 +35,7 @@ describe("チェックボックスの操作による、凡例の表示・非表�
       .children()
       .should("not.have.css", "text-decoration", "line-through");
   });
-  it.skip("凡例をクリックすると、取り消し線が表示される", () => {
+  it("凡例をクリックすると、取り消し線が表示される", () => {
     cy.get('[value="北海道"]').check();
     cy.wait(100);
 
@@ -47,10 +47,11 @@ describe("チェックボックスの操作による、凡例の表示・非表�
     cy.get("[data-testid=legend]")
       .children()
       .should("have.text", "北海道")
-      .should("have.css", "text-decoration", "line-through");
+      .children("p")
+      .should("have.css", "text-decoration-line", "line-through");
   });
 
-  it.skip("取り消し線が表示されている凡例を再度クリックすると取り消し線が非表示になる", () => {
+  it("取り消し線が表示されている凡例を再度クリックすると取り消し線が非表示になる", () => {
     cy.get('[value="北海道"]').check();
     cy.wait(100);
 
@@ -67,6 +68,6 @@ describe("チェックボックスの操作による、凡例の表示・非表�
     cy.get("[data-testid=legend]")
       .children()
       .should("have.text", "北海道")
-      .should("not.have.css", "text-decoration", "line-through");
+      .should("have.css", "text-decoration-line", "none");
   });
 });

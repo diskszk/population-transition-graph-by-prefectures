@@ -28,6 +28,7 @@ const props: Props = {
       hidden: false,
     },
   ],
+  handleClick: () => void 0,
 };
 
 export const LegendItem: ComponentStoryObj<typeof Component> = {
@@ -42,4 +43,38 @@ export const LegendItem: ComponentStoryObj<typeof Component> = {
     },
   ],
   args: props as Props,
+};
+
+const LineThroughProps: Props = {
+  datasets: [
+    {
+      label: "北海道",
+      data: [],
+      borderColor: "#0f0",
+      prefCode: 1,
+      hidden: true,
+    },
+    {
+      label: "青森県",
+      data: [],
+      borderColor: "#00F",
+      prefCode: 2,
+      hidden: true,
+    },
+  ],
+  handleClick: () => void 0,
+};
+
+export const LineThrough: ComponentStoryObj<typeof Component> = {
+  decorators: [
+    (Story) => {
+      return (
+        <>
+          <GlobalStyle />
+          <Story />
+        </>
+      );
+    },
+  ],
+  args: LineThroughProps as Props,
 };

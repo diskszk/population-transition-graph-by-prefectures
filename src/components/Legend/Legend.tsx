@@ -1,9 +1,12 @@
+import { useCallback } from "react";
 import styled from "styled-components";
 import { COLOR_CODE } from "../../constants";
+import { useDatasets } from "../../hooks/useDatasets";
 import { Dataset } from "../../types";
 
 type Props = {
   datasets: Dataset[];
+  handleClick: (prefCode: number) => void;
 };
 
 type ContainerProps = {
@@ -34,18 +37,33 @@ const StyledBar = styled.div<{ color?: string }>`
   background-color: ${(props) => props.color || COLOR_CODE.spaceGray};
   margin-right: 8px;
 `;
+const StyledParagraph = styled.p<{ isHidden: boolean }>`
+  text-decoration-line: ${(props) =>
+    props.isHidden ? "line-through" : "none"};
+`;
 
-export const Component: React.FC<Props> = ({ datasets }) => (
+export const Component: React.FC<Props> = ({ datasets, handleClick }) => (
   <StyledUl data-testid="legend">
     {datasets.map((dataset, key) => (
-      <StyledLi key={key} onClick={() => void 0}>
+      <StyledLi key={key} onClick={() => handleClick(dataset.prefCode)}>
         <StyledBar color={dataset.borderColor} />
-        <p>{dataset.label}</p>
+        <StyledParagraph isHidden={dataset.hidden}>
+          {dataset.label}
+        </StyledParagraph>
       </StyledLi>
     ))}
   </StyledUl>
 );
 
 export const Container: React.FC<ContainerProps> = (props) => {
-  return <Component {...props} />;
+  const { toggleHidden } = useDatasets();
+
+  const handleClick = useCallback(
+    (prefCode: number) => {
+      toggleHidden(prefCode);
+    },
+    [toggleHidden]
+  );
+
+  return <Component datasets={props.datasets} handleClick={handleClick} />;
 };
