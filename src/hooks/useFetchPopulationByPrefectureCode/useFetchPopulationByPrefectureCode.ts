@@ -1,12 +1,13 @@
 import { useMutation } from "react-query";
 import { combinePrefecture } from "../../lib/combinePrefecture";
 import { fetchPopulationByPrefectureCode } from "../../lib/fetchPopulationByPrefectureCode";
+import { filterPopulationValue } from "../../lib/filterPopulationValue";
 import { Population, Prefecture } from "../../types";
-import { usePrefectureContext } from "../usePrefectureContext";
+import { useDatasets } from "../useDatasets";
 
 // TODO: この関数でPrefectureをセットするのは良くないので直す => Populationをsetするだけにとどめる
 export function useFetchPopulationByPrefectureCode(prefecture: Prefecture) {
-  const { addPrefecture } = usePrefectureContext();
+  const { addDataset } = useDatasets();
 
   return useMutation(
     (prefCode: number) => fetchPopulationByPrefectureCode(prefCode),
@@ -15,7 +16,19 @@ export function useFetchPopulationByPrefectureCode(prefecture: Prefecture) {
         if (data) {
           const combinedPrefecture = combinePrefecture(prefecture, data);
 
-          addPrefecture(combinedPrefecture);
+          const converted = {
+            label: combinedPrefecture.prefName,
+
+            // TODO: ここではfilterされた状態で出てくる想定
+            data: filterPopulationValue(combinedPrefecture),
+
+            borderColor: "#00f",
+            prefCode: combinedPrefecture.prefCode,
+            hidden: false,
+          };
+
+          addDataset(converted);
+          // addPrefecture(combinedPrefecture);
 
           return;
         }

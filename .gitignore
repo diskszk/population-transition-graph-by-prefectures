@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 
 # ignore todo file
-./TODO
+TODO
 
 # Cypress
 cypress/screenshots

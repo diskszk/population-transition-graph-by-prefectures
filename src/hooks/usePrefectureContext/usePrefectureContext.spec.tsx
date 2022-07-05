@@ -37,7 +37,6 @@ describe("usePrefectureContext", () => {
       result.current.addPrefecture({
         prefCode: 2,
         prefName: "青森県",
-        populations: [],
       });
     });
 
@@ -50,7 +49,6 @@ describe("usePrefectureContext", () => {
       {
         prefCode: 2,
         prefName: "青森県",
-        populations: [],
       },
     ]);
   });
@@ -62,7 +60,6 @@ describe("usePrefectureContext", () => {
       result.current.addPrefecture({
         prefCode: 2,
         prefName: "青森県",
-        populations: [],
       });
     });
 
@@ -80,7 +77,6 @@ describe("usePrefectureContext", () => {
       result.current.addPrefecture({
         prefName: "北海道",
         prefCode: 1,
-        populations: [],
       });
     });
 

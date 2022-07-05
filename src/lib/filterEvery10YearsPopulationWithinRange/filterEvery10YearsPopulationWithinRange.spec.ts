@@ -1,18 +1,14 @@
-import { Prefecture, Population } from "../../types";
+import { Population } from "../../types";
 import { filterEvery10YearsPopulationWithinRange } from "./filterEvery10YearsPopulationWithinRange";
 
 describe("filterEvery10YearsPopulationWithinRange", () => {
   test("人口数データを渡した時、範囲内の人口数データの配列のみを返す", () => {
-    const data: Prefecture = {
-      prefCode: 7,
-      prefName: "茨城県",
-      populations: [
-        { year: 1970, value: 100 },
-        { year: 1975, value: 200 },
-      ],
-    };
+    const populations = [
+      { year: 1970, value: 100 },
+      { year: 1975, value: 200 },
+    ];
 
-    const result = filterEvery10YearsPopulationWithinRange(data.populations);
+    const result = filterEvery10YearsPopulationWithinRange(populations);
 
     expect(result).toEqual([
       {

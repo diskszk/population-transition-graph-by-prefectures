@@ -13,7 +13,8 @@ type Props = ComponentProps<typeof Component>;
 
 export const 北海道 = () => {
   const props: Props = {
-    handleChange: () => void 0,
+    checkedOn: () => void 0,
+    checkedOff: () => void 0,
     prefecture: mockedHokkaido,
   };
 
@@ -24,12 +25,12 @@ export const 北海道 = () => {
 const okinawa: Prefecture = {
   prefCode: 47,
   prefName: "沖縄県",
-  populations: [],
 };
 
 export const 沖縄県: ComponentStoryObj<typeof Component> = {
   args: {
-    handleChange: () => void 0,
+    checkedOn: () => void 0,
+    checkedOff: () => void 0,
     prefecture: okinawa,
   } as Props,
 };

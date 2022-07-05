@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 import { useFetchPopulationByPrefectureCode } from "../../hooks/useFetchPopulationByPrefectureCode";
-import { usePrefectureContext } from "../../hooks/usePrefectureContext";
 import { Prefecture } from "../../types";
 
 export type ReturnType = {
@@ -11,8 +10,6 @@ export type ReturnType = {
 };
 
 export function useInputCheck(prefecture: Prefecture): ReturnType {
-  const { removePrefecture } = usePrefectureContext();
-
   const { mutate, isLoading, isError, error } =
     useFetchPopulationByPrefectureCode(prefecture);
 
@@ -24,10 +21,10 @@ export function useInputCheck(prefecture: Prefecture): ReturnType {
         if (checked) {
           mutate(prefecture.prefCode);
         } else {
-          removePrefecture(prefecture);
+          // removePrefecture(prefecture);
         }
       },
-      [mutate, prefecture, removePrefecture]
+      [mutate, prefecture]
     ),
     isLoading,
     isError,
