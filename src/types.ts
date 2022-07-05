@@ -9,7 +9,6 @@ export type Dataset = {
 export type Prefecture = {
   prefCode: number;
   prefName: PrefName;
-  populations: Population[];
 };
 
 export type Population = {

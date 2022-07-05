@@ -5,7 +5,6 @@ describe("convertToDataset", () => {
   const prefecture: Prefecture = {
     prefName: "北海道",
     prefCode: 1,
-    populations: [],
   };
 
   const populations: Population[] = [

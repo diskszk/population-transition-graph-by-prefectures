@@ -25,7 +25,6 @@ export const 北海道 = () => {
 const okinawa: Prefecture = {
   prefCode: 47,
   prefName: "沖縄県",
-  populations: [],
 };
 
 export const 沖縄県: ComponentStoryObj<typeof Component> = {

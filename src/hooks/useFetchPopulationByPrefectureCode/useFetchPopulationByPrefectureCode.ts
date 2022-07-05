@@ -1,12 +1,9 @@
 import { useMutation } from "react-query";
-import { GRAPH_LINE_COLORS } from "../../constants";
 import { combinePrefecture } from "../../lib/combinePrefecture";
-import { convertToDatasetFromPrefectures } from "../../lib/convertToDatasetFromPrefectures";
 import { fetchPopulationByPrefectureCode } from "../../lib/fetchPopulationByPrefectureCode";
 import { filterPopulationValue } from "../../lib/filterPopulationValue";
 import { Population, Prefecture } from "../../types";
 import { useDatasets } from "../useDatasets";
-import { usePrefectureContext } from "../usePrefectureContext";
 
 // TODO: この関数でPrefectureをセットするのは良くないので直す => Populationをsetするだけにとどめる
 export function useFetchPopulationByPrefectureCode(prefecture: Prefecture) {
