@@ -10,5 +10,5 @@ export default {
 type Props = ComponentProps<typeof Component>;
 
 export const ErrorModal: ComponentStoryObj<typeof Component> = {
-  args: { message: "エラーが発生しました", onClick: () => void 0 } as Props,
+  args: { message: "エラーが発生しました", restError: () => void 0 } as Props,
 };

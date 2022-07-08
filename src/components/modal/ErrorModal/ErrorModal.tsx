@@ -3,29 +3,23 @@ import { Modal } from "../common/Modal";
 
 type Props = {
   message: string;
-  onClick: () => void;
+  restError: () => void;
 };
 
 type ContainerProps = {
   error: Error;
-  onClick: () => void;
+  restError: () => void;
 };
 
-export const Component: React.FC<Props> = ({ onClick, message }) => (
+export const Component: React.FC<Props> = ({ restError, message }) => (
   <Modal>
     <StyledContainer>
       <p>{message}</p>
-      <button onClick={onClick}>閉じる</button>
+      <button onClick={restError}>閉じる</button>
     </StyledContainer>
   </Modal>
 );
 
-export const Container: React.FC<ContainerProps> = ({
-  error: _error,
-  onClick,
-}) => {
-  // TODO: errorを渡すと独自のエラーメッセージを返すhooksを作る
-  const customMessage = "何かしらのエラーが発生しました(仮)";
-
-  return <Component onClick={onClick} message={customMessage} />;
+export const Container: React.FC<ContainerProps> = ({ error, restError }) => {
+  return <Component restError={restError} message={error.message} />;
 };

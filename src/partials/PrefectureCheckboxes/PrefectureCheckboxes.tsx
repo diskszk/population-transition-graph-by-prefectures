@@ -2,10 +2,17 @@ import { useQuery } from "react-query";
 import styled from "styled-components";
 import { Checkbox } from "../../components/Checkbox";
 import { fetchPrefectures } from "../../lib/fetchPrefectures";
+import { Prefecture } from "../../types";
 
 export const PrefectureCheckboxes: React.FC = () => {
-  const { data } = useQuery("fetchPrefectures", fetchPrefectures);
+  const { data, isError, error } = useQuery<Prefecture[]>(
+    "fetchPrefectures",
+    fetchPrefectures
+  );
 
+  if (isError) {
+    throw error;
+  }
   return (
     <div>
       <StyledH2>都道府県</StyledH2>
