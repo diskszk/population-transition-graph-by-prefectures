@@ -1,3 +1,4 @@
+import React, { RefObject, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { StyledContainer } from "../common/commonStyles";
 import { Modal } from "../common/Modal";
@@ -5,6 +6,12 @@ import { Modal } from "../common/Modal";
 type Props = {
   message: string;
   restError: () => void;
+  currentRef?:
+    | ((instance: HTMLDivElement | null) => void)
+    | RefObject<HTMLDivElement>
+    | null
+    | undefined;
+  handleKeyDown: React.KeyboardEventHandler<HTMLDivElement>;
 };
 
 type ContainerProps = {
@@ -26,9 +33,14 @@ const StyledDiv = styled.div`
   flex-direction: column;
 `;
 
-export const Component: React.FC<Props> = ({ restError, message }) => (
+export const Component: React.FC<Props> = ({
+  restError,
+  message,
+  currentRef,
+  handleKeyDown,
+}) => (
   <Modal>
-    <StyledContainer>
+    <StyledContainer tabIndex={0} ref={currentRef} onKeyDown={handleKeyDown}>
       <StyledDiv>
         <p>{message}</p>
         <button onClick={restError}>閉じる</button>
@@ -38,5 +50,26 @@ export const Component: React.FC<Props> = ({ restError, message }) => (
 );
 
 export const Container: React.FC<ContainerProps> = ({ error, restError }) => {
-  return <Component restError={restError} message={error.message} />;
+  const currentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    currentRef.current?.focus();
+  }, []);
+
+  const handleKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
+    const { key } = ev;
+
+    if (key === "Escape") {
+      restError();
+    }
+  };
+
+  return (
+    <Component
+      message={error.message}
+      restError={restError}
+      currentRef={currentRef}
+      handleKeyDown={handleKeyDown}
+    />
+  );
 };
