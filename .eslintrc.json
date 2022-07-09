@@ -66,5 +66,11 @@
     "react/prop-types": "off"
   },
   // 下記ファイルにはeslintを適応しない
-  "ignorePatterns": [".eslintrc.*", "setupTests.ts", "jest.setup.ts"]
+  "ignorePatterns": [
+    ".eslintrc.*",
+    "setupTests.ts",
+    "jest.setup.ts",
+    "cypress/",
+    "cypress.config.ts"
+  ]
 }

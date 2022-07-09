@@ -15,13 +15,10 @@ export async function fetchPopulationByPrefectureCode(
 ): Promise<Population[]> {
   const BASE_URL =
     "https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?cityCode=-&prefCode=";
-  const { data, status } = await axios.get<Response>(`${BASE_URL}${prefCode}`, {
+  const { data } = await axios.get<Response>(`${BASE_URL}${prefCode}`, {
     headers: { "X-API-KEY": API_KEY },
   });
 
-  if (status !== 200) {
-    throw new Error(status.toString());
-  }
-
-  return data.result.data.map((data) => data.data).flat(1);
+  // label: 総人口だけを取り出す
+  return data.result.data[0].data;
 }

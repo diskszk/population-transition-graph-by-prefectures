@@ -13,6 +13,7 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
+      display: false,
       position: "right" as const,
       labels: {
         boxHeight: 1,
@@ -36,6 +37,8 @@ export const options = {
         display: true,
         text: "人口数",
       },
+      suggestedMin: 100000,
+      suggestedMax: 5000000,
     },
   },
 };

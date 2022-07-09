@@ -6,20 +6,11 @@ export default {
 } as Meta;
 
 export const ColorCodes = () => {
-  const { borderColor, backgroundColor } = GRAPH_LINE_COLORS;
-
   return (
     <div>
-      <div>
-        {borderColor.map((color, key) => {
-          return <ColorLine key={key} color={color} />;
-        })}
-      </div>
-      <div>
-        {backgroundColor.map((bgc, key) => {
-          return <BackGroundColor key={key} bgc={bgc} />;
-        })}
-      </div>
+      {GRAPH_LINE_COLORS.map((color, key) => {
+        return <ColorLine key={key} color={color} />;
+      })}
     </div>
   );
 };
@@ -34,7 +25,4 @@ const ColorLine: React.FC<{ color: string }> = ({ color }) => {
       color: {color}
     </div>
   );
-};
-const BackGroundColor: React.FC<{ bgc: string }> = ({ bgc }) => {
-  return <div style={{ backgroundColor: bgc, height: "20px" }}></div>;
 };

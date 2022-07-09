@@ -1,21 +1,28 @@
+import { useQuery } from "react-query";
 import styled from "styled-components";
 import { Checkbox } from "../../components/Checkbox";
+import { fetchPrefectures } from "../../lib/fetchPrefectures";
 import { Prefecture } from "../../types";
 
-type Props = {
-  prefectures: Prefecture[];
-};
+export const PrefectureCheckboxes: React.FC = () => {
+  const { data, isError, error } = useQuery<Prefecture[]>(
+    "fetchPrefectures",
+    fetchPrefectures
+  );
 
-export const PrefectureCheckboxes: React.FC<Props> = ({ prefectures }) => {
+  if (isError) {
+    throw error;
+  }
   return (
     <div>
       <StyledH2>都道府県</StyledH2>
       <StyledUl>
-        {prefectures.map((prefecture) => (
-          <StyledLi key={prefecture.prefCode}>
-            <Checkbox prefecture={prefecture} />
-          </StyledLi>
-        ))}
+        {data &&
+          data.map((prefecture) => (
+            <StyledLi key={prefecture.prefCode}>
+              <Checkbox prefecture={prefecture} />
+            </StyledLi>
+          ))}
       </StyledUl>
     </div>
   );

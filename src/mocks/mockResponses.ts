@@ -1,3 +1,5 @@
+import { Prefecture } from "../types";
+
 export const mockedPrefecturesResponse = {
   message: null,
   result: [
@@ -223,4 +225,9 @@ export const mockedPopulationsResponse = {
       },
     ],
   },
+};
+
+export const mockedHokkaido: Prefecture = {
+  prefCode: 1,
+  prefName: "北海道",
 };

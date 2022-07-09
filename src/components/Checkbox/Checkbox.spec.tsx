@@ -1,27 +1,21 @@
-import { render, screen } from "@testing-library/react";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { Prefecture } from "../../types";
-import { Checkbox } from "./Checkbox";
+import { cleanup, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { mockedHokkaido } from "../../mocks/mockResponses";
+import { Component } from "./Checkbox";
 
 describe("Checkbox.tsx", () => {
-  const client = new QueryClient();
-
   beforeEach(() => {
-    const hokkaidou: Prefecture = {
-      prefCode: 1,
-      prefName: "北海道",
-      populations: [],
-    };
-
     render(
-      <QueryClientProvider client={client}>
-        <Checkbox prefecture={hokkaidou} />
-      </QueryClientProvider>
+      <Component
+        prefecture={mockedHokkaido}
+        checkedOn={() => void 0}
+        checkedOff={() => void 0}
+      />
     );
   });
 
   afterEach(() => {
-    client.clear();
+    cleanup();
   });
 
   test("チェックボックスと都道府県名を表示する", () => {
@@ -31,5 +25,10 @@ describe("Checkbox.tsx", () => {
 
   test("チェックボックスはデフォルトではチェックが入っていない状態で表示される", () => {
     expect(screen.getByRole("checkbox")).toBeNull;
+  });
+
+  test("チェックボックスをクリックするとチェックボックスにチェックが入る", async () => {
+    await userEvent.click(screen.getByRole("checkbox"));
+    expect(screen.getByRole("checkbox")).toBeChecked();
   });
 });

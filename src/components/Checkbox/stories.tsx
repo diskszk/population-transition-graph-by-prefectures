@@ -1,28 +1,36 @@
-import { ComponentMeta } from "@storybook/react";
+import { ComponentProps } from "react";
+import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
+import { mockedHokkaido } from "../../mocks/mockResponses";
 import { Prefecture } from "../../types";
-import { Checkbox } from "./Checkbox";
+import { Component } from "./Checkbox";
 
 export default {
   title: "Components/Checkbox",
-  component: Checkbox,
-} as ComponentMeta<typeof Checkbox>;
+  component: Component,
+} as ComponentMeta<typeof Component>;
+
+type Props = ComponentProps<typeof Component>;
 
 export const 北海道 = () => {
-  const hokkaidou: Prefecture = {
-    prefCode: 1,
-    prefName: "北海道",
-    populations: [],
+  const props: Props = {
+    checkedOn: () => void 0,
+    checkedOff: () => void 0,
+    prefecture: mockedHokkaido,
   };
 
-  return <Checkbox prefecture={hokkaidou} />;
+  return <Component {...props} />;
 };
 
-export const 沖縄県 = () => {
-  const okinawa: Prefecture = {
-    prefCode: 47,
-    prefName: "沖縄県",
-    populations: [],
-  };
+// 別の書き方
+const okinawa: Prefecture = {
+  prefCode: 47,
+  prefName: "沖縄県",
+};
 
-  return <Checkbox prefecture={okinawa} />;
+export const 沖縄県: ComponentStoryObj<typeof Component> = {
+  args: {
+    checkedOn: () => void 0,
+    checkedOff: () => void 0,
+    prefecture: okinawa,
+  } as Props,
 };

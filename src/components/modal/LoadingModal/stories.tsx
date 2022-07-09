@@ -1,14 +1,11 @@
-import { ComponentMeta } from "@storybook/react";
-import { Modal } from "../../../partials/Modal";
-import { LoadingModal } from "./LoadingModal";
+import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
+import { Component } from "./LoadingModal";
 
 export default {
   title: "Components/Modal/Loading",
-  component: LoadingModal,
-} as ComponentMeta<typeof LoadingModal>;
+  component: Component,
+} as ComponentMeta<typeof Component>;
 
-export const View = () => (
-  <Modal>
-    <LoadingModal />
-  </Modal>
-);
+export const LoadingModal: ComponentStoryObj<typeof Component> = {
+  args: {},
+};

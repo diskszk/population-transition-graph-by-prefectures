@@ -1,14 +1,19 @@
-import { ComponentMeta } from "@storybook/react";
-import { Modal } from "../../../partials/Modal";
-import { ErrorModal } from "./ErrorModal";
+import { ComponentProps } from "react";
+import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
+import { Component } from "./ErrorModal";
 
 export default {
   title: "Components/Modal/Error",
-  component: ErrorModal,
-} as ComponentMeta<typeof ErrorModal>;
+  component: Component,
+} as ComponentMeta<typeof Component>;
 
-export const View = () => (
-  <Modal>
-    <ErrorModal error={new Error("error")} onClick={() => null} />
-  </Modal>
-);
+type Props = ComponentProps<typeof Component>;
+
+export const ErrorModal: ComponentStoryObj<typeof Component> = {
+  args: {
+    message: "エラーが発生しました",
+    restError: () => void 0,
+    currentRef: null,
+    handleKeyDown: () => void 0,
+  } as Props,
+};

@@ -1,7 +1,14 @@
+export type Dataset = {
+  label: PrefName;
+  data: number[];
+  borderColor: string;
+  prefCode: number;
+  hidden: boolean;
+};
+
 export type Prefecture = {
   prefCode: number;
   prefName: PrefName;
-  populations: Population[];
 };
 
 export type Population = {
