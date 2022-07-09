@@ -11,14 +11,14 @@ export type ReturnType = {
 };
 
 export function useHandleCheck(): ReturnType {
-  const { removeDataset, addDataset } = useDatasets();
+  const { removeDataset, addDataset, state } = useDatasets();
 
   const { mutate, isLoading, isError, error } = useMutation(
     (prefecture: Prefecture) =>
       fetchPopulationByPrefectureCode(prefecture.prefCode),
     {
       onSuccess: (populations, ctx: Prefecture) => {
-        const dataset = convertToDataset(ctx, populations);
+        const dataset = convertToDataset(ctx, populations, state.length);
 
         addDataset(dataset);
       },

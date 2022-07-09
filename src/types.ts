@@ -1,7 +1,7 @@
 export type Dataset = {
   label: PrefName;
   data: number[];
-  borderColor?: string;
+  borderColor: string;
   prefCode: number;
   hidden: boolean;
 };

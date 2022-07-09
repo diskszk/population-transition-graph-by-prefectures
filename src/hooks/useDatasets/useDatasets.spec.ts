@@ -42,6 +42,7 @@ describe("useDatasets", () => {
 
     expect(result.current.state).toHaveLength(1);
     expect(result.current.state[0].label).toBe("北海道");
+    expect(result.current.state[0].borderColor).toBe(dummyData1.borderColor);
   });
 
   test("removeDataset: 北海道のデータを配列から削除すると、北海道のデータを参照できない", () => {
