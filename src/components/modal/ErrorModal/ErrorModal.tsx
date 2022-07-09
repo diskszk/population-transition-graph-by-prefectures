@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { StyledContainer } from "../common/commonStyles";
 import { Modal } from "../common/Modal";
 
@@ -11,11 +12,27 @@ type ContainerProps = {
   restError: () => void;
 };
 
+const StyledDiv = styled.div`
+  height: 400px;
+
+  width: 400px;
+  max-width: 100%;
+  border-radius: 20%;
+  background-color: #fefefe;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
 export const Component: React.FC<Props> = ({ restError, message }) => (
   <Modal>
     <StyledContainer>
-      <p>{message}</p>
-      <button onClick={restError}>閉じる</button>
+      <StyledDiv>
+        <p>{message}</p>
+        <button onClick={restError}>閉じる</button>
+      </StyledDiv>
     </StyledContainer>
   </Modal>
 );
