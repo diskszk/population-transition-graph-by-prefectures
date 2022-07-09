@@ -11,14 +11,14 @@ export type ReturnType = {
 };
 
 export function useHandleCheck(): ReturnType {
-  const { removeDataset, addDataset } = useDatasets();
+  const { removeDataset, addDataset, state } = useDatasets();
 
-  const { mutate, isLoading, isError } = useMutation(
+  const { mutate, isLoading, isError, error } = useMutation(
     (prefecture: Prefecture) =>
       fetchPopulationByPrefectureCode(prefecture.prefCode),
     {
       onSuccess: (populations, ctx: Prefecture) => {
-        const dataset = convertToDataset(ctx, populations);
+        const dataset = convertToDataset(ctx, populations, state.length);
 
         addDataset(dataset);
       },
@@ -29,7 +29,7 @@ export function useHandleCheck(): ReturnType {
     throw new Promise(() => void 0);
   }
   if (isError) {
-    throw new Error();
+    throw error;
   }
 
   const checkedOn = useCallback(

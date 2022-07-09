@@ -29,10 +29,7 @@ export const App: React.FC = () => {
               <ErrorBoundary
                 onReset={reset}
                 fallbackRender={({ resetErrorBoundary, error }) => (
-                  <ErrorModal
-                    error={error}
-                    onClick={() => resetErrorBoundary()}
-                  />
+                  <ErrorModal error={error} restError={resetErrorBoundary} />
                 )}
               >
                 <Home />

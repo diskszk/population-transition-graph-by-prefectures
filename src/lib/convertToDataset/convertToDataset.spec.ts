@@ -1,4 +1,4 @@
-import { convertToDataset } from "./convertToDataset";
+import { convertToDataset, getColor } from "./convertToDataset";
 import { Dataset, Population, Prefecture } from "../../types";
 
 describe("convertToDataset", () => {
@@ -29,9 +29,16 @@ describe("convertToDataset", () => {
       label: "北海道",
       data: [5184287, 5575989, 5643647, 5683062, 5506419, 5216615],
       prefCode: 1,
+      borderColor: "rgba(255, 99, 132, 0.2)",
       hidden: false,
     };
 
-    expect(convertToDataset(prefecture, populations)).toEqual(dataset);
+    expect(convertToDataset(prefecture, populations, 0)).toEqual(dataset);
   });
+});
+
+describe("getColor", () => {
+  const color = getColor(28);
+
+  expect(color).toBe("rgba(135,206,250, 0.2)");
 });
