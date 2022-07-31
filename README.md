@@ -11,18 +11,18 @@
 ## 主な使用技術とバージョン
 
 - node: 16.15.X
-- typescript: 4.6.X
-- react: 18.0.X
-- react-dom: 18.0.X
-- vite: 2.9.X
+- typescript: 4.7.X
+- react: 18.2.X
+- react-dom: 18.2.X
+- vite: 3.0.X
 - react-query: 3.39.X
 - axios: 0.27.X
 - styled-components: 5.3.X
-- chart.js: 3.7.X
-- react-chartjs-2: 4.1.X
+- chart.js: 3.8.X
+- react-chartjs-2: 4.3.X
 - jest: 28.1.X
-- testing-library/react: 13.2.X
-- storybook/react: 6.4.X
+- testing-library/react: 13.3.X
+- storybook/react: 6.5.X
 
 
 ## インストール方法
